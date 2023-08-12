@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Models\Notice;
+use App\Models\Setting;
 
 class TeamController extends Controller
 {
@@ -40,15 +42,16 @@ class TeamController extends Controller
     public function store(Request $request)
     {
 
-
-
         $data = $request->validate([
             "name" => ["required", "string"],
             "position" => ["required", "string"],
-            "category" => ["required", "string"],
-            "sorting" => ["required", "integer"],
+            "category" => ["nullable"],
+            "sorting" => ["nullable", "integer"],
             "status" => ["nullable"],
-            "detail" => ["required", "string"],
+            "detail" => ["nullable", "string"],
+            "facebook_link" => ["nullable"],
+            "twitter_link" => ["nullable"],
+            "linkedin_link" => ["nullable"],
             "photo" => ["required"]
 
         ]);
@@ -88,10 +91,13 @@ class TeamController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "position" => ["required", "string"],
-                "category" => ["required", "string"],
-                "sorting" => ["required", "integer"],
+                "category" => ["nullable"],
+                "sorting" => ["nullable", "integer"],
                 "status" => ["nullable"],
-                "detail" => ["required", "string"],
+                "detail" => ["nullable", "string"],
+                "facebook_link" => ["nullable"],
+                "twitter_link" => ["nullable"],
+                "linkedin_link" => ["nullable"],
                 "photo" => ["required"]
 
             ]);
@@ -105,10 +111,13 @@ class TeamController extends Controller
             $data = $request->validate([
                 "name" => ["required", "string"],
                 "position" => ["required", "string"],
-                "category" => ["required", "string"],
-                "sorting" => ["required", "integer"],
+                "category" => ["nullable"],
+                "sorting" => ["nullable", "integer"],
                 "status" => ["nullable"],
-                "detail" => ["required", "string"],
+                "detail" => ["nullable", "string"],
+                "facebook_link" => ["nullable"],
+                "twitter_link" => ["nullable"],
+                "linkedin_link" => ["nullable"],
 
             ]);
         }
@@ -123,5 +132,23 @@ class TeamController extends Controller
     public function destroy(Team $team)
     {
         //
+    }
+    public function aboutus()
+    {
+        $aboutIntro = Notice::whereHas('categories', function ($query) {
+            $query->where('name', "about intro");
+        })->get();
+        $aboutCard = Notice::whereHas('categories', function ($query) {
+            $query->where('name', "about card");
+        })->get();
+
+        $settings = Setting::get();
+        $teams = Team::get();
+        return view('frontend.aboutus', [
+            "aboutIntro" => $aboutIntro,
+            "aboutCard" => $aboutCard,
+            "teams" => $teams,
+            "settings" => $settings
+        ]);
     }
 }

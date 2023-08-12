@@ -22,4 +22,8 @@ class Course extends Model
     {
         return $this->hasMany(Syllabus::class);
     }
+    public function upcommingclasses()
+    {
+        return $this->hasMany(Upcommingclass::class);
+    }
 }

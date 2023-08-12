@@ -35,6 +35,7 @@
                         <select id="course" name="course" required
                             class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="">
+
                             <option value="">Select a course</option>
                             <option value="course1">Web Development</option>
                             <option value="course2">MERN Stack</option>

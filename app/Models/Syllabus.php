@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Syllabus extends Model
 {
     use HasFactory;
+    protected $table = "syllabuses";
     protected $fillable = [
         'title',
         'description',
         'image',
         'course_id'
-
     ];
-    public function courses()
+    public function suraj()
     {
         return  $this->belongsTo(Course::class, 'course_id');
     }

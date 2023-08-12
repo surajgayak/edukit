@@ -21,16 +21,17 @@
                 <div class="container-fluid p-3">
                     <form method="POST" action="/team-store" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Full Name:</label>
-                            <input type="text" name="name" class="form-control" id="Currency-name"
-                                placeholder="Full Name" value="{{ old('name') }}">
-                            @if ($errors->has('name'))
-                                <div class="error text-danger">{{ $errors->first('name') }}
-                                </div>
-                            @endif
-                        </div>
                         <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="recipient-name" class="col-form-label">Full Name:</label>
+                                <input type="text" name="name" class="form-control" id="Currency-name"
+                                    placeholder="Full Name" value="{{ old('name') }}">
+                                @if ($errors->has('name'))
+                                    <div class="error text-danger">{{ $errors->first('name') }}
+                                    </div>
+                                @endif
+                            </div>
+
                             <div class="col-6">
                                 <label for="recipient-name" class="col-form-label"> Position:</label>
                                 <input type="text" name="position" class="form-control" id="Currency-name"
@@ -40,6 +41,9 @@
                                     </div>
                                 @endif
                             </div>
+                        </div>
+                        <div class="row mb-3">
+
                             <div class="col-6">
                                 <label for="recipient-name" class="col-form-label"> Representation:</label>
                                 <input type="text" name="category" class="form-control" id="Currency-name"
@@ -49,8 +53,7 @@
                                     </div>
                                 @endif
                             </div>
-                        </div>
-                        <div class="row mb-3">
+
                             <div class="col-6">
                                 <label for="recipient-name" class="col-form-label"> Photo:</label>
                                 <input type="file" id="photo" name="photo" class="form-control"
@@ -60,6 +63,8 @@
                                     </div>
                                 @endif
                             </div>
+                        </div>
+                        <div class="row mb-3">
                             <div class="col-6">
                                 <label for="recipient-name" class="col-form-label"> Sorting Order:</label>
                                 <input type="number" name="sorting" class="form-control" id="Currency-name"
@@ -69,44 +74,75 @@
                                     </div>
                                 @endif
                             </div>
+
+                            <div class="col-6">
+                                <label for="recipient-name" class="col-form-label"> Facebook_link:</label>
+                                <input type="url" id="facebook_link" name="facebook_link" class="form-control"
+                                    placeholder="facebook link">
+                                @if ($errors->has('photo'))
+                                    <div class="error text-danger">{{ $errors->first('photo') }}
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-12">
-                                <label for="recipient-name" class="col-form-label"> Details:</label>
-                                <input type="text" name="detail" class="form-control" id="Currency-name"
-                                    placeholder=" Details " value="{{ old('detail') }}">
-                                @if ($errors->has('detail'))
-                                    <div class="error text-danger">{{ $errors->first('detail') }}
+                            <div class="col-6">
+                                <label for="recipient-name" class="col-form-label"> Twitter_Link:</label>
+                                <input type="url" name="twitter_link" class="form-control" id="twitter_link"
+                                    placeholder="twitter link " value="{{ old('sorting') }}">
+                                @if ($errors->has('twitter_link'))
+                                    <div class="error text-danger">{{ $errors->first('twitter_link') }}
                                     </div>
                                 @endif
                             </div>
 
+
+                            <div class="col-6">
+                                <label for="recipient-name" class="col-form-label">LinkedIn_Link:</label>
+                                <input type="url" name="linkedin_link" class="form-control" id="linkedin_link"
+                                    placeholder="linkedin_link " value="{{ old('linkedin_link') }}">
+                                @if ($errors->has('linkedin_link'))
+                                    <div class="error text-danger">{{ $errors->first('linkedin_link') }}
+                                    </div>
+                                @endif
+                            </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <div class="col-12">
-
-                                <div class="form-check pb-3">
-                                    <input class="form-check-input form-check" type="checkbox" name="status" checked
-                                        value="1" id="status">
-                                    <label class=" p-2 form-check-label h6" for="status">
-                                        Active Status
-                                    </label>
-                                </div>
-
-                                @if ($errors->has('status'))
-                                <div class="error text-danger">{{ $errors->first('status') }}
+                        <div class="col-12">
+                            <label for="recipient-name" class="col-form-label"> Details:</label>
+                            <input type="text" name="detail" class="form-control" id="Currency-name"
+                                placeholder=" Details " value="{{ old('detail') }}">
+                            @if ($errors->has('detail'))
+                                <div class="error text-danger">{{ $errors->first('detail') }}
                                 </div>
                             @endif
-
-                            </div>
-
                         </div>
 
-                        <button type="submit" class="btn blue_button">Add Member</button>
-                    </form>
                 </div>
+
+                <div class="row mb-3 " style="margin-left:5px;">
+                    <div class="col-12">
+
+                        <div class="form-check pb-3 ">
+                            <input class="form-check-input form-check" type="checkbox" name="status" checked
+                                value="1" id="status">
+                            <label class=" p-2 form-check-label h6" for="status">
+                                Active Status
+                            </label>
+                        </div>
+
+                        @if ($errors->has('status'))
+                            <div class="error text-danger">{{ $errors->first('status') }}
+                            </div>
+                        @endif
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn blue_button " style="margin-left:8px;">Add Member</button>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 @endsection

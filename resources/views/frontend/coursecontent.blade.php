@@ -11,19 +11,15 @@
         </div>
 
         <!-- Title of Product -->
-        <h1 class="text-3xl font-semibold my-4">Web Designing Training</h1>
+        <h1 class="text-3xl font-semibold my-4">{{ $courses->title }}</h1>
 
         <!-- Description -->
-        <p class="text-white">Web designing is the process of creating the visual elements and user interface of a
-            website. It involves planning, conceptualizing, and arranging various components on a web page to ensure an
-            appealing and functional user experience. Web designers work with a combination of technical skills,
-            creativity, and understanding of user behavior to design websites that are both visually pleasing and easy
-            to navigate.</p>
+        <p class="text-2xl text-white font-bold " style="color:white !important;">{!! $courses->introduction !!}</p>
 
         <!-- Duration with time icons -->
         <div class="flex items-center mt-4">
             <i class="fas fa-clock text-white"></i>
-            <span class="text-white pl-2">Duration: 2 months</span>
+            <span class="text-white pl-2">Duration: {{ $courses->duration }}</span>
         </div>
 
         <!-- Enquiry button -->
@@ -58,12 +54,8 @@
     <div class="content flex justify-center flex-wrap pt-5 md:max-w-full " id="content">
         <div class="desc w-1/2  px-12 py-5">
             <h1 class="text-orange-500 text-2xl">Description</h1>
-            <h2 class="text-xl font-bold pt-5">Web Designing Training</h2>
             <p class="text-black pt-3">
-                Web design training in Nepal from Kitwosd is a popular and in-demand course that allows
-                learners to explore generating and designing websites using various programming languages and software
-                tools. The course covers the usual subjects of HTML, CSS, JavaScript, jQuery, web design concepts, user
-                experience, and responsive design.
+                {!! $courses->description !!}
             </p>
             <br>
             <p class="hidden " id="remainingContent" class="text-gray-500">
@@ -80,13 +72,8 @@
             <!-- Benefit section -->
             <div class="mt-10" id="benefit" class="pt-10">
                 <h1 class="text-orange-500 text-2xl">Benefit</h1>
-                <h2 class="text-xl font-bold pt-5">Why a Web Design Training Course?
                 </h2>
-                <p class="pt-2">Increased Need for Web Designers: There is a strong demand for qualified web designers
-                    in Nepal and
-                    worldwide due to the rising demand for websites and online-based applications. You may gain the
-                    skills and information required to be successful in this expanding business by enrolling in a web
-                    design school.
+                <p class="pt-2">{!! $courses->benefit !!}
                     <br><br>
                 <p class="hidden " id="remainingContent1" class="text-gray-500">
                     Job Possibilities: After completing a web design school, you can get employment as a front-end
@@ -104,80 +91,18 @@
 
             <h1 class="text-orange-500 pt-10 text-2xl " id="syllabus">Syllabus</h1>
             <!-- Syllabus  -->
-            <div class="syllabus mt-10" id="syllabus">
-                <span class="text-xl ">Introduction to Web Designing</span>
-                <i class="fas fa-chevron-down float-right pt-1 text-gray-400 cursor-pointer " id="expandicon"></i>
-                <div class="content" id="expandablecontent">
-                    <li>Mockups</li>
-                    <li>Figma Design</li>
-                    <li>Photoshop Design</li>
-                    <li>Mockups</li>
-                    <li>Mockups</li>
+            @foreach ($courses->syllabuses as $item)
+                <div class="syllabus mt-10">
+                    <span class="text-xl">{{ $item->title }}</span>
+                    <i class="fas fa-chevron-down float-right pt-1 text-gray-400 cursor-pointer expand-icon"></i>
+                    <div class="content">
+                        {!! $item->description !!}
+                    </div>
+                    <hr class="mt-3">
                 </div>
-                <hr class="mt-3">
-            </div>
-            <div class="syllabus mt-10" id="syllabus">
-                <span class="text-xl ">HTML & HTML5</span>
-                <i class="fas fa-chevron-down float-right pt-1 text-gray-400 cursor-pointer " id="expandicon1"></i>
-                <div class="content" id="expandablecontent1">
-                    <li>Html</li>
-                    <li>Tags</li>
-                    <li>Attribute</li>
-                    <li>Heading</li>
-                    <li>Paragraph</li>
-                    <li>Table</li>
-                    <li>ul</li>
-                    <li>li</li>
-                    <li>Paragraph</li>
-                </div>
-                <hr class="mt-3">
-            </div>
-            <div class="syllabus mt-10" id="syllabus">
-                <span class="text-xl ">CSS & CSS3</span>
-                <i class="fas fa-chevron-down float-right pt-1 text-gray-400 cursor-pointer " id="expandicon2"></i>
-                <div class="content" id="expandablecontent2">
-                    <li>Padding</li>
-                    <li>Margin</li>
-                    <li>Position</li>
-                    <li>Flexbox</li>
-                    <li>Grid</li>
-                    <li>Animation</li>
-                    <li>Gradient</li>
+            @endforeach
 
-                </div>
-                <hr class="mt-3">
-            </div>
-            <div class="syllabus mt-10" id="syllabus">
-                <span class="text-xl ">JavaScript</span>
-                <i class="fas fa-chevron-down float-right pt-1 text-gray-400 cursor-pointer " id="expandicon3"></i>
-                <div class="content" id="expandablecontent3">
-                    <li>Data Types</li>
-                    <li>Operator</li>
-                    <li>Variable</li>
-                    <li>Conditonals,loops</li>
-                    <li>Functions</li>
-                    <li>Array</li>
-                    <li>Document Object Model</li>
 
-                </div>
-                <hr class="mt-3">
-            </div>
-            <div class="syllabus mt-10" id="syllabus">
-                <span class="text-xl ">ReactJS</span>
-                <i class="fas fa-chevron-down float-right pt-1 text-gray-400 cursor-pointer " id="expandicon4"></i>
-                <div class="content" id="expandablecontent4">
-                    <li>React ES6</li>
-                    <li>JSX</li>
-                    <li>State & Props</li>
-                    <li>React LifeCycle</li>
-                    <li>Events</li>
-                    <li>React Router</li>
-                    <li>React Hooks</li>
-                    <li>Redux</li>
-
-                </div>
-                <hr class="mt-3">
-            </div>
             <!-- Vacancy -->
             <div class="vacancy mt-10" id="vacancy">
                 <!-- Related Course -->

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Course;
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,8 +19,13 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        view()->composer('layouts.frontend-layout.navfoot', function ($view) {
+            $view->with([
+                'courses' => Course::get(),
+                'settings' => Setting::first(),
+            ]);
+        });
     }
 }

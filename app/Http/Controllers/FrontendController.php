@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Notice;
+use App\Models\Alumni;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -14,12 +15,19 @@ class FrontendController extends Controller
     }
     public function aboutus()
     {
-        return view('frontend.aboutus');
+        $aboutIntro = Notice::whereHas('categories', function ($query) {
+            $query->where('name', "about intro");
+        })->get();
+        $aboutCard = Notice::whereHas('categories', function ($query) {
+            $query->where('name', "about card");
+        })->get();
+
+        return view('frontend.aboutus', [
+            "aboutIntro" => $aboutIntro,
+            "aboutCard" => $aboutCard,
+        ]);
     }
-    public function classes()
-    {
-        return view('frontend.upcommingclass');
-    }
+
     public function contact()
     {
         return view('frontend.contact');
@@ -47,6 +55,9 @@ class FrontendController extends Controller
     }
     public function successstories()
     {
-        return view('frontend.successstories');
+        $alumnis = Alumni::get();
+        return view('frontend.successstories', [
+            'alumnis' => $alumnis,
+        ]);
     }
 }

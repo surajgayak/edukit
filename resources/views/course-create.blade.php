@@ -101,7 +101,8 @@
         $('#summernote').summernote({
             placeholder: 'Description',
             tabsize: 2,
-            height: 100
+            height: 100,
+
         });
         $('#benefit').summernote({
             placeholder: 'benefit',

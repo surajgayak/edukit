@@ -18,6 +18,9 @@ class Team extends Model
         'representation',
         'detail',
         'photo',
+        'facebook_link',
+        'twitter_link',
+        'linkedin_link'
     ];
 
     // public function getPhotoPathAttribute()

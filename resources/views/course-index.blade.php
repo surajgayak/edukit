@@ -56,6 +56,8 @@
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151"> Description
                                 </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Syllabus
+                                </th>
                                 <th scope="col" class="text-light text-nowrap" style="background-color:#1d1d1d">
                                     Action</th>
                             </tr>
@@ -89,17 +91,29 @@
 
                                     <td>{!! $course->introduction !!}</td>
                                     <td>{!! $course->benefit !!}</td>
-                                    <td>{!! $course->description !!}
+                                    <td>{!! $course->description !!} </td>
+                                    <td>
+                                        @foreach ($course->syllabuses as $item)
+                                            <ul>
+                                                <li>{{ $item->title }}</li>
+                                            </ul>
+                                        @endforeach
                                     </td>
+
+
                                     <td class="text-nowrap">
                                         <div class="container-fluid d-flex">
-
+                                            <a href="{{ route('syllabus-add', $course) }}">
+                                                <div class="btn blue_button sized"><i
+                                                        class='bx bx-message-square-edit'></i>add Syllabus
+                                                </div>
+                                            </a>
                                             <a href="{{ route('course-edit', $course) }}">
                                                 <div class="btn blue_button sized"><i
                                                         class='bx bx-message-square-edit'></i>Edit
                                                 </div>
                                             </a>
-                                            <a class="mx-1" href="{{ route('course-delete', $course) }}">
+                                            <a class="mx-1" href="{{ route('course-delete', $course->id) }}">
                                                 <div class="btn btn-danger sized"><i class='bi bi-trash'></i>Delete
                                                 </div>
                                             </a>
@@ -116,21 +130,20 @@
                 <div class="row px-3 pb-3 justify-content-end">
                     <div class="col-7 d-flex justify-content-end">
                         <div class="d-flex p-0 m-0">
-                            <a class="text-decoration-none">
-                                {{-- href="{{ $notices->withQueryString()->previousPageUrl() }}" --}}
+                            <a class="text-decoration-none" href="{{ $courses->withQueryString()->previousPageUrl() }}">
+
                                 <div class="btn btn-primary btn-sm d-flex align-items-center justify-content-center">
                                     Previous
                                 </div>
                             </a>
                             <div
                                 class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
-                                {{-- {{ $notices->currentPage() }} --}}
+                                {{ $courses->currentPage() }}
 
                             </div>
 
 
-                            <a class="text-decoration-none">
-                                {{-- href="{{ $notices->withQueryString()->nextPageUrl() }}" --}}
+                            <a class="text-decoration-none" href="{{ $courses->withQueryString()->nextPageUrl() }}">
                                 <div class="btn btn-sm btn-primary d-flex align-items-center justify-content-center">
                                     Next
                                 </div>
@@ -154,7 +167,7 @@
                 perPage: perPageEl.value,
                 page: 1,
             };
-            const url = new URL("{{ url('/') }}/notice-index");
+            const url = new URL("{{ url('/') }}/course-index");
             url.search = new URLSearchParams(queryParams).toString();
             window.location.href = url
         }

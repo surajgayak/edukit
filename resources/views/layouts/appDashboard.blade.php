@@ -183,7 +183,7 @@
                 <a href="{{ route('course-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-person-lock'></i>
+                        <i class='mainI bi bi-book'></i>
                         <span class="link_name">Courses</span>
                         <ul class="sub-menu blank">
                             <li>
@@ -193,11 +193,11 @@
                     </div>
                 </a>
             </li>
-            {{-- <li class="mt-2 ">
+            <li class="mt-2 ">
                 <a href="{{ route('syllabus-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-person-lock'></i>
+                        <i class='mainI bi bi-book'></i>
                         <span class="link_name">Syllabus</span>
                         <ul class="sub-menu blank">
                             <li>
@@ -206,16 +206,58 @@
                         </ul>
                     </div>
                 </a>
-            </li> --}}
+            </li>
+            <li class="mt-2 ">
+                <a href="{{ route('upcommingclass-create') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-book'></i>
+                        <span class="link_name">Upcoming Class</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Upcoming Class</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li>
+            <li class="mt-2 ">
+                <a href="{{ route('alumni-create') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-book'></i>
+                        <span class="link_name">Alumni</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Alumni</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li>
+            <li class="mt-2 ">
+                <a href="{{ route('setting-create') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-book'></i>
+                        <span class="link_name">Settings</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Settings</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li>
             <li class="mt-2 ">
                 <a href="{{ route('user-create') }}">
 
                     <div class="iocn-link">
                         <i class='mainI bi bi-person-add'></i>
-                        <span class="link_name"> Users</span>
+                        <span class="link_name">User</span>
                         <ul class="sub-menu blank">
                             <li>
-                                <div class="link_name">Users</div>
+                                <div class="link_name">User</div>
                             </li>
                         </ul>
                     </div>
@@ -274,6 +316,7 @@
     </footer>
     @yield('footer')
     <script src="../js/dashboard.js"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
 </body>
 
 </html>

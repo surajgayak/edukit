@@ -38,21 +38,34 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            "title" => ["required", "string"],
-            "status" => ["required", "boolean"],
-            "priority" => ["nullable", "int"],
-            "category_id" => ["required", "int"],
-            "description" => ["required", "string"],
-            "image" => ["required"]
+        if ($request->image) {
+            $data = $request->validate([
+                "title" => ["required", "string"],
+                "status" => ["required", "boolean"],
+                "priority" => ["nullable", "int"],
+                "category_id" => ["required", "int"],
+                "description" => ["required", "string"],
+                "image" => ["required"]
 
-        ]);
-        $image = $request->file('image');
-        $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
+            ]);
+            $image = $request->file('image');
+            $input['image_name'] = "Image-" . date('Ymdhis') . random_int(0, 1234) . "." . $image->getClientOriginalName();
 
-        $destinationPath = public_path('/images/photos');
-        $image->move($destinationPath, $input['image_name']);
-        $data['image'] = $input['image_name'];
+            $destinationPath = public_path('/images/photos');
+            $image->move($destinationPath, $input['image_name']);
+            $data['image'] = $input['image_name'];
+        } else {
+            $data = $request->validate([
+                "title" => ["required", "string"],
+                "status" => ["required", "boolean"],
+                "priority" => ["nullable", "int"],
+                "category_id" => ["required", "int"],
+                "description" => ["required", "string"],
+
+            ]);
+        }
+
+
 
         Notice::create($data);
         return redirect('/notice-index');

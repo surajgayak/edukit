@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumni;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Laravel\Ui\Presets\React;
@@ -25,9 +27,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function welcome()
     {
-        return view('home');
+        $alumnis = Alumni::get();
+        $course = Course::get();
+        return view('frontend.welcome', [
+            'courses' => $course,
+            'alumnis' => $alumnis
+        ]);
     }
 
 
@@ -43,7 +50,6 @@ class HomeController extends Controller
             $users = $main_query->paginate(10);
         return view('user-index', ["users" => $users]);
     }
-
 
     public function userCreate()
     {

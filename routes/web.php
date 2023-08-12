@@ -14,20 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 // Auth Routes (do not remove)
 Auth::routes();
 
 // Frontend routes
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
 Route::get('/gallery', [App\Http\Controllers\FrontendController::class, 'gallery'])->name('gallery');
-Route::get('/aboutus', [App\Http\Controllers\FrontendController::class, 'aboutus'])->name('aboutus');
-Route::get('/classes', [App\Http\Controllers\FrontendController::class, 'classes'])->name('classes');
+Route::get('/aboutus', [App\Http\Controllers\TeamController::class, 'aboutus'])->name('aboutus');
+Route::get('/classes', [App\Http\Controllers\UpcommingclassController::class, 'classes'])->name('classes');
 Route::get('/contact', [App\Http\Controllers\FrontendController::class, 'contact'])->name('contact');
 Route::get('/blog', [App\Http\Controllers\NoticeController::class, 'blog'])->name('blog');
-Route::get('/coursecontent', [App\Http\Controllers\FrontendController::class, 'coursecontent'])->name('coursecontent');
-Route::get('/allcourse', [App\Http\Controllers\FrontendController::class, 'allcourse'])->name('allcourse');
+Route::get('/coursecontent/{course}', [App\Http\Controllers\CourseController::class, 'coursecontent'])->name('coursecontent');
+Route::get('/allcourse', [App\Http\Controllers\CourseController::class, 'showdata'])->name('allcourse');
 Route::get('/sendenquiry', [App\Http\Controllers\FrontendController::class, 'sendenquiry'])->name('sendenquiry');
 Route::get('/getadmission', [App\Http\Controllers\FrontendController::class, 'getadmission'])->name('getadmission');
 Route::get('/placementpartner', [App\Http\Controllers\FrontendController::class, 'placementpartner'])->name('placementpartner');
@@ -38,7 +39,7 @@ Route::get('/blogdesc/{notice}', [App\Http\Controllers\NoticeController::class, 
 
 
 // Admin Routes
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'userIndex'])->name('home');
 
 Route::group(["middleware" => "auth"], function () {
     // Routes for Teams
@@ -97,5 +98,40 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/course-store', [App\Http\Controllers\CourseController::class, 'courseStore'])->name('course-store');
     Route::get('/course-index', [App\Http\Controllers\CourseController::class, 'courseIndex'])->name('course-index');
     Route::get('/course-edit/{course}', [App\Http\Controllers\CourseController::class, 'courseEdit'])->name('course-edit');
+    Route::post('/course-update/{course}', [App\Http\Controllers\CourseController::class, 'courseUpdate'])->name('course-update');
     Route::get('/course-delete/{course}', [App\Http\Controllers\CourseController::class, 'destroy'])->name('course-delete');
+    // Route::get('/course-delete/{course}', [App\Http\Controllers\CourseController::class, 'destroy'])->name('course-delete');
+
+    // Route for syllabus
+    Route::get('/syllabus-create', [App\Http\Controllers\SyllabusController::class, 'create'])->name('syllabus-create');
+    Route::post('/syllabus-store', [App\Http\Controllers\SyllabusController::class, 'store'])->name('syllabus-store');
+    Route::get('/syllabus-index', [App\Http\Controllers\SyllabusController::class, 'index'])->name('syllabus-index');
+    Route::get('/syllabus-edit/{syllabus}', [App\Http\Controllers\SyllabusController::class, 'edit'])->name('syllabus-edit');
+    Route::post('/syllabus-update/{syllabus}', [App\Http\Controllers\SyllabusController::class, 'update'])->name('syllabus-update');
+    Route::get('/syllabus-delete/{syllabus}', [App\Http\Controllers\SyllabusController::class, 'destroy'])->name('syllabus-delete');
+    Route::get('/syllabus-add/{course}', [App\Http\Controllers\SyllabusController::class, 'add'])->name('syllabus-add');
+
+    // Upcomming Classes
+    Route::get('/upcommingclass-create', [App\Http\Controllers\UpcommingclassController::class, 'create'])->name('upcommingclass-create');
+    Route::post('/upcommingclass-store', [App\Http\Controllers\UpcommingclassController::class, 'store'])->name('upcommingclass-store');
+    Route::get('/upcommingclass-index', [App\Http\Controllers\UpcommingclassController::class, 'index'])->name('upcommingclass-index');
+    Route::get('/upcommingclass-edit/{upcommingclass}', [App\Http\Controllers\UpcommingclassController::class, 'edit'])->name('upcommingclass-edit');
+    Route::post('/upcommingclass-update/{upcommingclass}', [App\Http\Controllers\UpcommingclassController::class, 'update'])->name('upcommingclass-update');
+    Route::get('/upcommingclass-delete/{upcommingclass}', [App\Http\Controllers\UpcommingclassController::class, 'destroy'])->name('upcommingclass-delete');
+
+    // Settings
+    Route::get('/setting-create', [App\Http\Controllers\SettingController::class, 'create'])->name('setting-create');
+    Route::post('/setting-store', [App\Http\Controllers\SettingController::class, 'store'])->name('setting-store');
+    Route::get('/setting-index', [App\Http\Controllers\SettingController::class, 'index'])->name('setting-index');
+    Route::get('/setting-delete/{setting}', [App\Http\Controllers\SettingController::class, 'destroy'])->name('setting-delete');
+    Route::post('/setting-update/{setting}', [App\Http\Controllers\SettingController::class, 'update'])->name('setting-update');
+    Route::get('/setting-edit/{setting}', [App\Http\Controllers\SettingController::class, 'edit'])->name('setting-edit');
+
+    // Alumni
+    Route::get('/alumni-create', [App\Http\Controllers\AlumniController::class, 'create'])->name('alumni-create');
+    Route::post('/alumni-store', [App\Http\Controllers\AlumniController::class, 'store'])->name('alumni-store');
+    Route::get('/alumni-index', [App\Http\Controllers\AlumniController::class, 'index'])->name('alumni-index');
+    Route::get('/alumni-delete/{alumni}', [App\Http\Controllers\AlumniController::class, 'destroy'])->name('alumni-delete');
+    Route::get('/alumni-edit/{alumni}', [App\Http\Controllers\AlumniController::class, 'edit'])->name('alumni-edit');
+    Route::post('/alumni-update/{alumni}', [App\Http\Controllers\AlumniController::class, 'update'])->name('alumni-update');
 });
