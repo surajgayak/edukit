@@ -21,21 +21,29 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Frontend routes
-Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcomepage');
 Route::get('/gallery', [App\Http\Controllers\FrontendController::class, 'gallery'])->name('gallery');
 Route::get('/aboutus', [App\Http\Controllers\TeamController::class, 'aboutus'])->name('aboutus');
 Route::get('/classes', [App\Http\Controllers\UpcommingclassController::class, 'classes'])->name('classes');
-Route::get('/contact', [App\Http\Controllers\FrontendController::class, 'contact'])->name('contact');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 Route::get('/blog', [App\Http\Controllers\NoticeController::class, 'blog'])->name('blog');
 Route::get('/coursecontent/{course}', [App\Http\Controllers\CourseController::class, 'coursecontent'])->name('coursecontent');
+// Route::post('/coursecontent', [App\Http\Controllers\CoursecontentController::class, 'coursecontent'])->name('coursecontent');
 Route::get('/allcourse', [App\Http\Controllers\CourseController::class, 'showdata'])->name('allcourse');
-Route::get('/sendenquiry', [App\Http\Controllers\FrontendController::class, 'sendenquiry'])->name('sendenquiry');
-Route::get('/getadmission', [App\Http\Controllers\FrontendController::class, 'getadmission'])->name('getadmission');
-Route::get('/placementpartner', [App\Http\Controllers\FrontendController::class, 'placementpartner'])->name('placementpartner');
+Route::get('/sendenquiry', [App\Http\Controllers\SendenquiryController::class, 'index'])->name('sendenquiry');
+Route::get('/sendcourseenquiry/{upcomming}', [App\Http\Controllers\SendenquiryController::class, 'sendcourseenquiry'])->name('sendcourseenquiry');
+Route::post('/sendenquiry-store', [App\Http\Controllers\SendenquiryController::class, 'store'])->name('sendenquiry-store');
+Route::get('/sendenquiry-store', [App\Http\Controllers\SendenquiryController::class, 'sendenq'])->name('sendenquiry-store');
+Route::get('/getadmission', [App\Http\Controllers\GetadmissionController::class, 'welcpage'])->name('welcpage');
+Route::get('/getadmission/{upcomming}', [App\Http\Controllers\GetadmissionController::class, 'getadmission'])->name('getadmission');
+Route::post('/getadmission', [App\Http\Controllers\GetadmissionController::class, 'store'])->name('getadmissions');
+Route::get('/paymentinfo', [App\Http\Controllers\FrontendController::class, 'paymentinfo'])->name('paymentinfo');
+Route::get('/all-placementpartner', [App\Http\Controllers\FrontendController::class, 'placementpartner'])->name('all-placementpartner');
 Route::get('/successstories', [App\Http\Controllers\FrontendController::class, 'successstories'])->name('successstories');
 Route::get('/blogdesc/{notice}', [App\Http\Controllers\NoticeController::class, 'blogdesc'])->name('blogdesc');
-
-
+Route::get('/paymentmethod/{getadmission}', [App\Http\Controllers\GetadmissionController::class, 'paymentmethod'])->name('paymentmethod');
+Route::post('/payment-update/{getadmission}', [App\Http\Controllers\GetadmissionController::class, 'paymentUpdate'])->name('payment-update');
+Route::get('/reviewdetails/{getadmission}', [App\Http\Controllers\GetadmissionController::class, 'review'])->name('reviewdetails');
 
 
 // Admin Routes
@@ -69,6 +77,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/media-store', [App\Http\Controllers\MediaController::class, 'store'])->name('media-store');
     Route::get('/media-edit/{media}', [App\Http\Controllers\MediaController::class, 'edit'])->name('media-edit');
     Route::post('/media-update/{media}', [App\Http\Controllers\MediaController::class, 'update'])->name('media-update');
+    Route::get('/media-delete/{media}', [App\Http\Controllers\MediaController::class, 'destroy'])->name('media-delete');
 
     // Routes for Notices
     Route::get('/notice-create', [App\Http\Controllers\NoticeController::class, 'create'])->name('notice-create');
@@ -134,4 +143,23 @@ Route::group(["middleware" => "auth"], function () {
     Route::get('/alumni-delete/{alumni}', [App\Http\Controllers\AlumniController::class, 'destroy'])->name('alumni-delete');
     Route::get('/alumni-edit/{alumni}', [App\Http\Controllers\AlumniController::class, 'edit'])->name('alumni-edit');
     Route::post('/alumni-update/{alumni}', [App\Http\Controllers\AlumniController::class, 'update'])->name('alumni-update');
+
+    // Routes for Type
+    Route::get('/type-create', [App\Http\Controllers\TypeController::class, 'create'])->name('type-create');
+    Route::get('/type-index', [App\Http\Controllers\TypeController::class, 'index'])->name('type-index');
+    Route::post('/type-store', [App\Http\Controllers\TypeController::class, 'store'])->name('type-store');
+    Route::get('/type-edit/{type}', [App\Http\Controllers\TypeController::class, 'edit'])->name('type-edit');
+    Route::post('/type-update/{type}', [App\Http\Controllers\TypeController::class, 'update'])->name('type-update');
+
+
+    // Payment Method
+    Route::get('/paymentmethod-create', [App\Http\Controllers\PaymentmethodController::class, 'create'])->name('paymentmethod-create');
+    Route::post('/paymentmethod-store', [App\Http\Controllers\PaymentmethodController::class, 'store'])->name('paymentmethod-store');
+    Route::get('/paymentmethod-index', [App\Http\Controllers\PaymentmethodController::class, 'index'])->name('paymentmethod-index');
+    Route::get('/paymentmethod-edit/{paymentmethod}', [App\Http\Controllers\PaymentmethodController::class, 'edit'])->name('paymentmethod-edit');
+    Route::get('/paymentmethod-delete/{paymentmethod}', [App\Http\Controllers\PaymentmethodController::class, 'destroy'])->name('paymentmethod-delete');
+    Route::post('/paymentmethod-update/{paymentmethod}', [App\Http\Controllers\PaymentmethodController::class, 'update'])->name('paymentmethod-update');
+
+    // Getadmission Index
+    Route::get('/getadmission-index', [App\Http\Controllers\GetadmissionController::class, 'index'])->name('getadmission-index');
 });

@@ -218,4 +218,10 @@ html {
     .aboutdesc {
         width: 100% !important;
     }
+    .homeslider {
+        width: 400px !important;
+    }
+    .homeslider img {
+        width: 400px !important;
+    }
 }

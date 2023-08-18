@@ -64,13 +64,13 @@
             {{-- <li class="my-1 {{ Route::currentRouteName() === 'dashboard' ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}"> --}}
             <li class="my-1 ">
-                <a href="{{ route('home') }}">
+                <a href="{{ route('welcomepage') }}">
                     <div class="iocn-link">
                         <i class='mainI bi bi-grid-3x2-gap'></i>
-                        <span class="link_name">Dashboard</span>
+                        <span class="link_name">Go to Homepage</span>
                         <ul class="sub-menu blank">
                             <li>
-                                <div class="link_name">Dashboard</div>
+                                <div class="link_name">Go to Homepage</div>
                             </li>
                         </ul>
                     </div>
@@ -100,38 +100,10 @@
 
                     <div class="iocn-link">
                         <i class='mainI bi bi-list-nested'></i>
-                        <span class="link_name"> Category</span>
+                        <span class="link_name">Notice Category</span>
                         <ul class="sub-menu blank">
                             <li>
-                                <div class="link_name">Category</div>
-                            </li>
-                        </ul>
-                    </div>
-                </a>
-            </li>
-            <li class="mt-2 ">
-                <a href="{{ route('download-create') }}">
-
-                    <div class="iocn-link">
-                        <i class='mainI bi bi-download'></i>
-                        <span class="link_name"> Downloads</span>
-                        <ul class="sub-menu blank">
-                            <li>
-                                <div class="link_name">Downloads</div>
-                            </li>
-                        </ul>
-                    </div>
-                </a>
-            </li>
-            <li class="mt-2 ">
-                <a href="{{ route('media-create') }}">
-
-                    <div class="iocn-link">
-                        <i class='mainI bi bi-play-btn'></i>
-                        <span class="link_name"> Media</span>
-                        <ul class="sub-menu blank">
-                            <li>
-                                <div class="link_name">Media</div>
+                                <div class="link_name"> Notice Category</div>
                             </li>
                         </ul>
                     </div>
@@ -151,21 +123,78 @@
                     </div>
                 </a>
             </li>
-            <li class="mt-2 ">
-                <a href="#">
+            {{-- <li class="mt-2 ">
+                <a href="{{ route('download-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-file-earmark-ruled'></i>
-                        <span class="link_name"> Reports</span>
+                        <i class='mainI bi bi-download'></i>
+                        <span class="link_name"> Downloads</span>
                         <ul class="sub-menu blank">
                             <li>
-                                <div class="link_name">Reports</div>
+                                <div class="link_name">Downloads</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li> --}}
+            <li class="mt-2 ">
+                <a href="{{ route('type-create') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-list-nested'></i>
+                        <span class="link_name">Media Type </span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name"> Media Type </div>
                             </li>
                         </ul>
                     </div>
                 </a>
             </li>
             <li class="mt-2 ">
+                <a href="{{ route('media-create') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-play-btn'></i>
+                        <span class="link_name"> Media</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Media</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li>
+
+            <li class="mt-2 ">
+                <a href="{{ route('getadmission-index') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-file-earmark-ruled'></i>
+                        <span class="link_name"> Admission</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Admission</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li>
+            <li class="mt-2 ">
+                <a href="{{ route('paymentmethod-create') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-file-earmark-ruled'></i>
+                        <span class="link_name"> Payment Method</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Payment Method</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li>
+            {{-- <li class="mt-2 ">
                 <a href="{{ route('role-create') }}">
 
                     <div class="iocn-link">
@@ -174,6 +203,20 @@
                         <ul class="sub-menu blank">
                             <li>
                                 <div class="link_name">Roles</div>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </li> --}}
+            <li class="mt-2 ">
+                <a href="{{ route('sendenquiry-store') }}">
+
+                    <div class="iocn-link">
+                        <i class='mainI bi bi-book'></i>
+                        <span class="link_name">Enquiries</span>
+                        <ul class="sub-menu blank">
+                            <li>
+                                <div class="link_name">Enquiries</div>
                             </li>
                         </ul>
                     </div>

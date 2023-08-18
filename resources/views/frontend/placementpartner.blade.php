@@ -13,48 +13,16 @@
             careers in their area of expertise. Our Placement Partners have granted opportunities to our students which,
             we can proudly say, they have duly taken!</p>
         <div class="flex justify-center flex-wrap mt-10 gap-10">
+            @foreach ($placements as $placement)
+                <div class="partner1 w-36 h-20 bg-white ">
 
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
+                    <img src="{{ asset('images/medias/' . $placement->filename) }}" class="w-28 h-16 m-auto">
 
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
+                </div>
+            @endforeach
 
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
-            <div class="partner1 w-36 h-20 bg-white ">
-                <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-28 h-16 m-auto">
-            </div>
+
+
 
         </div>
 

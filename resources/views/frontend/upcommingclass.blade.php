@@ -36,12 +36,12 @@
                     <p class=" text-gray-400 pt-2" style="font-size:12px;">
                         {{ $upcomming->start_time }} - {{ $upcomming->end_time }}</p>
                     <div class="mt-4 mb-2 flex justify-around space-x-2">
-                        <a href="{{ route('sendenquiry') }}">
+                        <a href="{{ route('sendcourseenquiry', $upcomming) }}">
                             <button class="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded ">
                                 Send Enquiry <i class="fas fa-arrow-right"></i>
                             </button>
                         </a>
-                        <a href="{{ route('getadmission') }}">
+                        <a href="{{ route('getadmission', $upcomming) }}">
                             <button class="bg-orange-500  text-white text-sm px-4 py-2 rounded ">
                                 Get Admission <i class="fas fa-arrow-right"></i>
                             </button>

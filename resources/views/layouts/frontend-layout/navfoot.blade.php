@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>edukit</title>
+    <title>Edukit</title>
     <link rel="icon" href="https://edukits.co/wp-content/uploads/Brandmark_Web1.svg" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('style/style.css') }}">
@@ -13,15 +13,17 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
 
-    <script src="{{ asset('js/index.js') }}"></script>
+
+
 
 </head>
 
 <body>
     <!-- navbar -->
     <script src="//unpkg.com/alpinejs" defer></script>
-    <nav aria-label="navbar" x-data class="border-b bg-white fixed w-full z-20  ">
+    <nav aria-label="navbar" x-data class="border-b bg-white fixed w-full z-50  ">
         <div class="mx-auto max-w-screen-xl  py-2 shadow-sm flex-wrap  ">
             <div
                 class="flex items-center w-11/12 m-auto flex-wrap sm:justify-center sm:gap-3  md:justify-between   main ">
@@ -160,12 +162,12 @@
                             <a href="{{ route('classes') }}"
                                 class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Our Classes</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a
-                                href="{{ route('placementpartner') }}"class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Our
+                                href="{{ route('placementpartner',) }}"class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Our
                                 Placement
                                 Partners</a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('blog') }}"
                                 class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Blog</a>
@@ -292,13 +294,14 @@
             </div>
             <div class="mt-12">
                 <p class="text-white">We accepts :</p>
-                <div class="flex ">
-                    <img src="https://broadwayinfosys.com/uploads/payment-option/9871591363422.png"
-                        class="w-24 h-10 ">
-                    <img src="https://broadwayinfosys.com/uploads/payment-option/3961591361872.png"
-                        class="w-24 h-10 pl-5">
-                    <img src="https://broadwayinfosys.com/uploads/payment-option/7061591362121.png"
-                        class="w-24 h-10 pl-5">
+                <div class="flex gap-2  ">
+                    @foreach ($paymentmethods as $payment)
+                        <a href="">
+                            <img src="{{ asset('images/medias/' . $payment->logo) }}" class="w-24 h-14 ">
+                        </a>
+                    @endforeach
+
+
                 </div>
                 <br>
                 <div class="text-sm font-medium text-gray-300">&copy; 2023 All right reserved | Made by Kitwosd
@@ -344,6 +347,8 @@
             });
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+
 
 </body>
 

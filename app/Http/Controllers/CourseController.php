@@ -139,13 +139,13 @@ class CourseController extends Controller
         ]);
     }
 
-    public function index()
-    {
-        view()->composer(
-            'layouts.frontend-layout.navfoot',
-            function ($view) {
-                $view->with('courses', Course::get());
-            }
-        );
-    }
+    // public function index()
+    // {
+    //     view()->composer(
+    //         'layouts.frontend-layout.navfoot',
+    //         function ($view) {
+    //             $view->with('courses', Course::get());
+    //         }
+    //     );
+    // }
 }

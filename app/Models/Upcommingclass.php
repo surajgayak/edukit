@@ -19,4 +19,8 @@ class Upcommingclass extends Model
     {
         return  $this->belongsTo(Course::class, "course_id");
     }
+    public function getadmissions()
+    {
+        return  $this->hasMany(Getadmission::class);
+    }
 }

@@ -2,22 +2,40 @@
 <!-- Image section -->
 @section('content')
     <div class="herosection flex justify-center max-w-screen-xl m-auto mt-2  ">
-        <div class="img1 sm:w-full bg-blue-800 text-white px-10 pt-14 " style="width:500px; height:420px;">
-            <h1 class="" style="font-size:24px; font-weight:bolder;">Building Global IT Professionals since 2008
-            </h1>
-            <br>
-            <p> is one of the best inclusive computer training institutes in Kathmandu, Nepal.
-                Established in 2008, our professional IT Training and Development center has been employing experts in
-                this field to impart professional education.</p>
-            <br>
-            <a href="{{ route('getadmission') }}">
-                <button class="p-3 bg-orange-500 text-white">GET ADMISSION NOW<i class="fas fa-arrow-right pl-2"></i></button>
-            </a>
-        </div>
-        <div class="img1">
+        @foreach ($homeIntro as $item)
+            <div class="img1 sm:w-full bg-blue-800 text-white px-10 pt-14 " style="width:500px; height:420px;">
+                <h1 class="" style="font-size:24px; font-weight:bolder;">{{ $item->title }}
+                </h1>
+                <br>
+                <p> {!! $item->description !!}</p>
+                <br>
+                <a href="{{ route('sendenquiry') }}">
+                    <button class="p-3 bg-orange-500 text-white">GET ADMISSION NOW<i
+                            class="fas fa-arrow-right pl-2"></i></button>
+                </a>
+            </div>
+        @endforeach
+
+        {{-- <div class="img1">
             <img src="https://broadwayinfosys.com/uploads/slider/168724832745594.jpg" class="" alt="img1"
                 style="width:650px;height:420px;">
+        </div> --}}
+        {{--  --}}
+
+        <div id="controls-carousel" class="relative  img1 border" data-carousel="slide">
+
+            <div class="relative overflow-hidden  z-40 homeslider"style="width:650px;height:420px; ">
+                @foreach ($homesliders as $homeslider)
+                    <div class=" duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('images/medias/' . $homeslider->filename) }}" alt="..."
+                            style="width:650px;height:420px;">
+                    </div>
+                @endforeach
+            </div>
+
         </div>
+
+        {{--  --}}
         <div class="img3 md:w-1/4  flex flex-col text-white ">
             <div class="pro1 h-full text-center bg-blue-800">
                 <i class="fas fa-graduation-cap text-2xl pt-8"></i>
@@ -29,6 +47,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Available course -->
     <div class="course max-w-screen-xl  mt-5 p-5 m-auto  mx-auto">
@@ -106,6 +125,7 @@
 
 <!-- Placement partners -->
 <div class=" mt-20 bg-blue-50 p-5 max-w-screen-xl m-auto">
+
     <h1 class="text-center text-2xl font-bold">Our Placement Partners</h1>
     <p class="text-center pt-5 px-40  placementtext">Since 2008, the year we began our journey as a
         professional IT
@@ -116,114 +136,108 @@
         careers in their area of expertise. Our Placement Partners have granted opportunities to our students which,
         we can proudly say, they have duly taken!</p>
     <div class="flex justify-center flex-wrap mt-10 gap-6">
-        <div class="partner1 w-36 px-5 h-20 bg-white ">
-            <img src="https://broadwayinfosys.com/uploads/ourclients/1628138685.png" class="w-18 mt-2 h-16 m-auto">
-        </div>
-        <div class="partner1 w-36 px-5 h-20 bg-white ">
-            <img src="https://broadwayinfosys.com/uploads/career/1640318774.jpg" class="w-18 mt-2 h-16 m-auto">
-        </div>
-        <div class="partner1 w-36 px-5 h-20 bg-white ">
-            <img src="https://broadwayinfosys.com/uploads/career/1640318774.jpg" class="w-18 mt-2 h-16 m-auto">
-        </div>
-        <div class="partner1 w-36 px-5 h-20 bg-white ">
-            <img src="https://broadwayinfosys.com/uploads/ourclients/1628136667.png" class="w-18 mt-2 h-16 m-auto">
-        </div>
-        <div class="partner1 w-36 px-5 h-20 bg-white ">
-            <img src="https://broadwayinfosys.com/uploads/career/1607939490.png" class="w-18 mt-2 h-16 m-auto">
-        </div>
-        <div class="partner1 w-36 px-5 h-20 bg-white ">
-            <img src="https://broadwayinfosys.com/uploads/career/1533811997.png" class="w-18 mt-2 h-16 m-auto">
-        </div>
-        <div class="partner1 w-36 px-5 h-20 bg-white ">
-            <img src="https://broadwayinfosys.com/uploads/career/1562569188.jpg" class="w-18 mt-2 h-16 m-auto">
-        </div>
+        @php
+            $count = 0;
+        @endphp
+        @foreach ($placements as $placement)
+            @if ($count < 6)
+                <div class="partner1 w-36 px-5 h-20 bg-white ">
+                    <img src="{{ asset('images/medias/' . $placement->filename) }}" class="w-18 mt-2 h-16 m-auto">
+                </div>
+                @php
+                    $count++;
+                @endphp
+            @else
+            @break
+        @endif
+    @endforeach
 
-    </div>
-    <div class="flex justify-center mt-10">
-        <a href="{{ route('placementpartner') }}">
-            <button class="text-blue-800  p-2  rounded">View All<i class="fas fa-arrow-right pl-2"></i></button>
-        </a>
-    </div>
+
+</div>
+<div class="flex justify-center mt-10">
+    <a href="{{ route('all-placementpartner') }}">
+        <button class="text-blue-800  p-2  rounded">View All<i class="fas fa-arrow-right pl-2"></i></button>
+    </a>
+</div>
 </div>
 
 <!-- Images Gallery -->
 <div class=" mt-10 ">
-    <h1 class="text-center font-bold text-2xl ">Our Strength Our Assets</h1>
-    <p class="text-center pt-5 px-20">We not only offer career-oriented IT training in Nepal as per industry needs
-        but
-        also
-        assist in
-        successful
-        job placements for deserving students and professionals.</p>
-    <div class="imagegallery mt-10">
-        <div class="imagegallery1 flex flex-wrap justify-center">
-            <div class="gal1 w-96 h-auto">
-                <img src="https://broadwayinfosys.com/uploads/homepage/16334329397643373220.jpg" alt="">
-            </div>
-            <div class="gal2 w-96 bg-blue-700 pt-20 gal">
-                <img src="https://broadwayinfosys.com/uploads/logo/1659689859_85925.svg" class="h-32 m-auto">
-                <h1 class="text-2xl text-white text-center ">Happy Clients</h1>
-            </div>
-            <div class="gal3 w-96 h-auto">
-                <img src="https://broadwayinfosys.com/uploads/homepage/16876757583059520492.jpg" alt="">
-            </div>
-        </div>
+<h1 class="text-center font-bold text-2xl ">Our Strength Our Assets</h1>
+<p class="text-center pt-5 px-20">We not only offer career-oriented IT training in Nepal as per industry needs
+    but
+    also
+    assist in
+    successful
+    job placements for deserving students and professionals.</p>
+<div class="imagegallery mt-10">
+    <div class="imagegallery1 flex flex-wrap justify-center">
+        @php
+            $count = 0;
+        @endphp
+        @foreach ($cards as $index => $card)
+            @if ($count < 3)
+                <div class="gal1 w-96 h-96">
+                    <img src="{{ asset('images/medias/' . $card->filename) }}" alt=""
+                        class="w-96 h-96 object-fill">
+                </div>
+                <div class="gal2 w-96 bg-blue-700 pt-20 gal">
+                    @if ($staticImageUrls[$index])
+                        <img src="{{ $staticImageUrls[$index] }}" class="h-24 m-auto">
+                    @endif
+                    <h1 class="text-2xl text-white text-center pt-5">{{ $staticTextContents[$index] }} </h1>
+                </div>
+                @php
+                    $count++;
+                @endphp
+            @else
+            @break
+        @endif
+    @endforeach
 
-        <div class="imagegallery1 flex flex-wrap justify-center">
-            <div class="gal2 w-96 bg-orange-400 pt-20 gal">
-                <img src="https://broadwayinfosys.com/uploads/logo/1659689859_85925.svg" class="h-32 m-auto">
-                <h1 class="text-2xl text-white text-center ">Happy Clients</h1>
-            </div>
-            <div class="gal3 w-96 h-auto">
-                <img src="https://broadwayinfosys.com/uploads/homepage/16876757583059520492.jpg" alt="">
-            </div>
-            <div class="gal2 w-96 bg-purple-700 pt-20 gal">
-                <img src="https://broadwayinfosys.com/uploads/logo/1659689859_85925.svg" class="h-32 m-auto">
-                <h1 class="text-2xl text-white text-center ">Happy Clients</h1>
-            </div>
-        </div>
 
-    </div>
+
+</div>
 </div>
 
 <!-- Success Stories -->
 <div class="mt-16 max-w-screen-xl m-auto mb-2">
-    <h1 class="text-2xl font-bold text-center">Success Stories</h1>
-    <p class="px-60 text-center pt-5 success">By providing value-added services we have guided hundreds of
-        businesses to
-        attain
-        competitive
-        advantage and inspired thousands of professionals to excel in their career.</p>
-    <div data-slick='{"slidesToShow": 4, "slidesToScroll": 4, "arrows": true}'
-        class="center flex  flex-wrap mx-7 p-5 relative z-1   ">
-        @foreach ($alumnis as $alumni)
-            <div class="w-auto h-96  mx-2 my-1 jesus  ">
-                <div class="card w-70 rounded  shadow-lg h-96 ">
-                    <div class="w-70 h-96 mx-auto bg-white rounded-lg shadow-md overflow-hidden ">
-                        <!-- Image -->
-                        <img src="{{ asset('images/photos/' . $alumni->image) }}" alt="Person"
-                            class="w-full h-48 object-fit">
+<h1 class="text-2xl font-bold text-center">Success Stories</h1>
+<p class="px-60 text-center pt-5 success">By providing value-added services we have guided hundreds of
+    businesses to
+    attain
+    competitive
+    advantage and inspired thousands of professionals to excel in their career.</p>
+<div data-slick='{"slidesToShow": 4, "slidesToScroll": 4, "arrows": true}'
+    class="center flex  flex-wrap mx-7 p-5 relative z-1   ">
+    @foreach ($alumnis as $alumni)
+        <div class="w-auto h-96  mx-2 my-1 jesus  ">
+            <div class="card w-70 rounded  shadow-lg h-96 ">
+                <div class="w-70 h-96 mx-auto bg-white rounded-lg shadow-md overflow-hidden ">
+                    <!-- Image -->
+                    <img src="{{ asset('images/photos/' . $alumni->image) }}" alt="Person"
+                        class="w-full h-48 object-fit">
 
-                        <!-- Content -->
-                        <div class=" p-4 text-sm h-atuo">
-                            <h2 class="text-xl font-semibold">{{ ucfirst($alumni->name) }}</h2>
+                    <!-- Content -->
+                    <div class=" p-4 text-sm h-atuo">
+                        <h2 class="text-xl font-semibold">{{ ucfirst($alumni->name) }}</h2>
 
-                            <h2 class="text-gray-500 font-bold">{{ ucfirst($alumni->designation) }}</h2>
-                            <p class="text-gray-500">{{ ucfirst($alumni->placement) }}</p>
-                            <p class="text-sm pt-2">{!! $alumni->description !!} </p>
-                        </div>
+                        <h2 class="text-gray-500 font-bold">{{ ucfirst($alumni->designation) }}</h2>
+                        <p class="text-gray-500">{{ ucfirst($alumni->placement) }}</p>
+                        <p class="text-sm pt-2">{!! $alumni->description !!} </p>
                     </div>
-
                 </div>
+
             </div>
-        @endforeach
+        </div>
+    @endforeach
 
-    </div>
-    <a href="{{ route('successstories') }}" class="flex justify-center ">
-        <button class="m-auto bg-blue-500 p-2 rounded text-white ">View All<i
-                class="fas fa-arrow-right pl-2"></i></button>
+</div>
+<a href="{{ route('successstories') }}" class="flex justify-center ">
+    <button class="m-auto bg-blue-500 p-2 rounded text-white ">View All<i
+            class="fas fa-arrow-right pl-2"></i></button>
 
-    </a>
+</a>
 </div>
 @endsection
 <!-- footer -->

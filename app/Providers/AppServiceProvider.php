@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Course;
 use App\Models\Setting;
+use App\Models\Paymentmethod;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'courses' => Course::get(),
                 'settings' => Setting::first(),
+                'paymentmethods' => Paymentmethod::all()
             ]);
         });
     }

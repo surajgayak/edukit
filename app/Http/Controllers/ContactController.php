@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -12,7 +13,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $course = Course::get();
+        return view('frontend.contact', [
+            'courses' => $course,
+        ]);
     }
 
     /**

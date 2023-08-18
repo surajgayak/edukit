@@ -9,6 +9,7 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Laravel\Ui\Presets\React;
+use App\Models\Media;
 
 class HomeController extends Controller
 {
@@ -29,11 +30,28 @@ class HomeController extends Controller
      */
     public function welcome()
     {
+        $staticImageUrls = [
+            'https://broadwayinfosys.com/assets/images/svg-icons/ico-precious.svg',
+            'https://broadwayinfosys.com/assets/images/svg-icons/ico-professional.svg',
+            'https://broadwayinfosys.com/assets/images/svg-icons/ico-student-certificate.svg',
+        ];
+        $staticTextContents = [
+            'Precious and Happy Clients',
+            'Professional IT Training Institute in Nepal',
+            'Student Certified and Job Placement',
+
+        ];
+        $medias = Media::get();
+        // dd($medias);
         $alumnis = Alumni::get();
         $course = Course::get();
         return view('frontend.welcome', [
             'courses' => $course,
-            'alumnis' => $alumnis
+            'alumnis' => $alumnis,
+            'medias' => $medias,
+            'staticTextContents' => $staticTextContents,
+            'staticImageUrls' => $staticImageUrls,
+
         ]);
     }
 

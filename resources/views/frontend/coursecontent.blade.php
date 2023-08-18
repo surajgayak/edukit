@@ -23,13 +23,13 @@
         </div>
 
         <!-- Enquiry button -->
-        <a href="sendenquiry.html">
+        {{-- <a href="sendenquiry.html">
             <button class="mt-5 bg-yellow-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded">Enquiry<i
                     class="fas fa-arrow-right pl-2"></i></button>
-        </a>
+        </a> --}}
         <!-- Get Admission button -->
-        <a href="payment.html">
-            <button class="mt-5  bg-cyan-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded ml-3">Get
+        <a href="{{ route('getadmission') }}">
+            <button class="mt-5  bg-yellow-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded ml-3">Get
                 Admission<i class="fas fa-arrow-right pl-2"></i></button>
         </a>
     </div>
@@ -138,9 +138,11 @@
 
         <!-- forms -->
         <div class="contain mx-auto px-4 py-5">
-            <form id=" responsive-form" class="md:w-4/5 mx-auto bg-white  rounded px-8 pt-6 pb-8 mb-4  "
+            <form action={{ route('sendenquiry-store') }} method="post" id="responsive-form"
+                class="md:w-4/5 mx-auto bg-white  rounded px-8 pt-6 pb-8 mb-4 "
                 style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
-                <h1 class="text-center font-bold text-2xl p-8">GOT A QUESTION? SEND AN ENQUIRY</h1>
+                @csrf
+                <h1 class="text-center font-bold md:text-2xl sm:text-sm  p-8">GOT A QUESTION? SEND AN ENQUIRY</h1>
 
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm  mb-2 text-thin" for="name">Name<sup
@@ -159,7 +161,7 @@
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm  mb-2" for="phone">Contact Number<sup
                             class="text-red-500 z-1">*</sup></label>
-                    <input type="tel" id="phone" name="phone" required
+                    <input type="number" id="contact" name="contact" required
                         class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="Enter your contact number">
                 </div>
@@ -169,19 +171,15 @@
                     <select id="course" name="course" required
                         class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="">
-                        <option value="">Select a course</option>
-                        <option value="course1">Web Development</option>
-                        <option value="course2">MERN Stack</option>
-                        <option value="course3">Flutter</option>
-                        <option value="course4">Digital Marketing</option>
-                        <option value="course5">React Js</option>
-                        <option value="course6">Node Js</option>
+
+                        <option value="{{ $courses->title }}">{{ $courses->title }}</option>
+
                     </select>
                 </div>
 
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm  mb-2" for="school">School/Colleges Name</label>
-                    <input type="text" id="school" name="school" required
+                    <input type="text" id="college" name="college" required
                         class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="Enter your school/college name">
                 </div>
@@ -190,7 +188,7 @@
                     <textarea id="school" rows="7" cols="50" name="message" required
                         class="bg-gray-100 text-sm appearance-none border rounded w-full  py-2  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="Tell us about you">
-                    </textarea>
+            </textarea>
                 </div>
                 <div class="flex items-center justify-center">
                     <input type="submit" value="Submit"

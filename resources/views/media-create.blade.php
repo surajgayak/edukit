@@ -22,6 +22,18 @@
                     <form method="POST" action="/media-store" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Media Type:</label>
+                            <select class="form-select" name="type_id" required aria-label="Default select example">
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('type_id'))
+                                <div class="error text-danger">{{ $errors->first('type_id') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Photo:</label>
                             <input type="file" name="filename" class="form-control" id="Currency-name"
                                 placeholder="Category Name" value="{{ old('name') }}">

@@ -10,7 +10,7 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a href="{{ route('media-create') }}" class="text-decoration-none"><button class="nav-link">Add
-                    Media</button></a>
+                        Media</button></a>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="paid-tab" data-bs-toggle="tab" data-bs-target="#paid" type="button"
@@ -32,7 +32,8 @@
                 <div class="col-9 col-md-4 d-flex justify-content-end search-position">
                     <input class="table-search-box" type="text" name="keyword" id="keyword" placeholder="Keyword"
                         value="{{ request()->keyword }}">
-                    <button type="btn" class="btn blue_button sized" onclick="go()"><i class="bi bi-search"></i></button>
+                    <button type="btn" class="btn blue_button sized" onclick="go()"><i
+                            class="bi bi-search"></i></button>
                 </div>
             </div>
             {{-- paid tab --}}
@@ -44,7 +45,9 @@
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">SN
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Photo
-                                    </th>
+                                </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Category
+                                </th>
 
                                 <th scope="col" class="text-light" style="background-color:#1d1d1d">
                                     Action</th>
@@ -68,31 +71,30 @@
                                     </td>
                                 </tr>
                             @endforeach --}}
-                            @foreach ($medias as $key=>$media )
+                            @foreach ($medias as $key => $media)
+                                <tr class=" text-center">
+                                    <td scope="row">{{ $key + 1 }}</td>
+                                    <td><img src="{{ asset('images/medias/' . $media->filename) }}" alt="image"
+                                            height="100" width="100"></td>
 
+                                    <td>{{ $media->type?->name }}</td>
+                                    <td>
+                                        <div class="container-fluid d-flex">
 
-                            <tr class=" text-center">
-                                <td scope="row">{{$key+1}}</td>
-                                <td ><img src="{{asset('images/medias/'.$media->filename)}}" alt="image" height="100"
-                                    width="100"></td>
+                                            <a class="mx-2" href="">
+                                                <div class="btn blue_button sized"><i
+                                                        class='bx bx-message-square-edit'></i>Replace
+                                                </div>
+                                            </a>
+                                            <a class="mx-2" href="{{ route('media-delete', $media->id) }}">
+                                                <div class="btn btn-danger sized"><i
+                                                        class='bx bx-message-square-edit'></i>Delete
+                                                </div>
+                                            </a>
 
-                                <td>
-                                    <div class="container-fluid d-flex">
-
-                                        <a class="mx-2" href="">
-                                            <div class="btn blue_button sized"><i
-                                                    class='bx bx-message-square-edit'></i>Replace
-                                            </div>
-                                        </a>
-                                        <a class="mx-2" href="">
-                                            <div class="btn btn-danger sized"><i
-                                                    class='bx bx-message-square-edit'></i>Delete
-                                            </div>
-                                        </a>
-
-                                    </div>
-                                </td>
-                            </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
 
 
@@ -110,7 +112,8 @@
                                     Previous
                                 </div>
                             </a>
-                            <div class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
+                            <div
+                                class="active_page btn btn-sm mx-1 btn-info text-dark fw-bold d-flex align-items-center justify-content-center">
                                 {{ $medias->currentPage() }}
 
                             </div>
@@ -130,7 +133,6 @@
 @endsection
 @section('footer')
     <script>
-
         let perPageEl = document.getElementById("perPage");
         const baseUrl = 'https://api.example.com';
 
@@ -146,4 +148,3 @@
         }
     </script>
 @endsection
-

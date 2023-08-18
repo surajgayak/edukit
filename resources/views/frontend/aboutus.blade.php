@@ -21,7 +21,7 @@
 
     <!-- Mission vision  and value-->
 
-    <div class="flex justify-center text-center  flex-wrap mt-10">
+    <div class="flex justify-center text-center text-justify  flex-wrap mt-10">
         @foreach ($aboutCard as $item)
             <div class="service-item flex flex-col items-center p-4 w-96">
                 <i class="fas fa-window-maximize text-4xl bg-blue-100 text-blue-500 p-3 rounded "></i>

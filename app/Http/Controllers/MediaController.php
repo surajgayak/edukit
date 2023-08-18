@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class MediaController extends Controller
@@ -14,12 +15,11 @@ class MediaController extends Controller
     {
         $main_query = Media::query();
 
-        if ($request->perPage>0) {
+        if ($request->perPage > 0) {
             $medias = $main_query->paginate($request->perPage);
-        }
-        else
+        } else
             $medias = $main_query->paginate(10);
-        return view("media-index",["medias"=>$medias]);
+        return view("media-index", ["medias" => $medias]);
     }
 
     /**
@@ -27,7 +27,10 @@ class MediaController extends Controller
      */
     public function create()
     {
-        return view("media-create");
+        $types = Type::get();
+        return view("media-create", [
+            "types" => $types
+        ]);
     }
 
     /**
@@ -37,8 +40,7 @@ class MediaController extends Controller
     {
         $data = $request->validate([
             "filename" => ["required"],
-
-
+            "type_id" => ["required"]
 
         ]);
         $image = $request->file('filename');
@@ -66,7 +68,7 @@ class MediaController extends Controller
      */
     public function edit(Media $media)
     {
-        return view("media-edit",["media"=>$media]);
+        return view("media-edit", ["media" => $media]);
     }
 
     /**
@@ -82,6 +84,15 @@ class MediaController extends Controller
      */
     public function destroy(Media $media)
     {
-        //
+        $media->delete();
+        return redirect('/media-index');
+    }
+
+    public function mediaIndex()
+    {
+        $media = Media::get();
+        return view('frontend.welcome', [
+            'medias' => $media,
+        ]);
     }
 }

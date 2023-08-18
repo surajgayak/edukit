@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Notice;
 use App\Models\Alumni;
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -28,30 +29,30 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function contact()
-    {
-        return view('frontend.contact');
-    }
 
-    public function coursecontent()
-    {
-        return view('frontend.coursecontent');
-    }
+
+
     public function allcourse()
     {
         return view('frontend.allcourse');
     }
-    public function sendenquiry()
+    public function paymentinfo()
     {
-        return view('frontend.sendenquiry');
+        return view('frontend.allcourse');
     }
-    public function getadmission()
-    {
-        return view('frontend.payment');
-    }
+
+
     public function placementpartner()
     {
-        return view('frontend.placementpartner');
+        $placements = Media::whereHas('type', function ($query) {
+            $query->where('name', "placement");
+        })->get();
+        return view(
+            'frontend.placementpartner',
+            [
+                'placements' => $placements
+            ]
+        );
     }
     public function successstories()
     {

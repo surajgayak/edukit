@@ -4,7 +4,7 @@
     <!-- all Success Stories -->
     <div class="flex flex-wrap max-w-screen-xl justify-center m-auto mt-5">
         @foreach ($alumnis as $alumni)
-            <div class=" w-64 h-auto mx-2 my-2 border">
+            <div class=" w-64 h-auto mx-2 my-2">
                 <div class="card w-full  h-96 rounded  shadow-lg ">
                     <div class="mx-auto bg-white  h-96  rounded-lg shadow-md overflow-hidden">
                         <!-- Image -->

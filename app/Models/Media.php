@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     use HasFactory;
-    protected $fillable = ['filename'];
+    protected $fillable = ['filename', 'type_id'];
 
 
     public function getImagePathAttribute()
@@ -16,5 +16,10 @@ class Media extends Model
         if ($this->filename == null)
             return "";
         return asset("media/image/" . $this->filename);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class, 'type_id');
     }
 }
