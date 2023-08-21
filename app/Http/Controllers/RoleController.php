@@ -16,12 +16,11 @@ class RoleController extends Controller
         if ($request->keyword) {
             $main_query->where("name", "LIKE", "%" . $request->keyword . "%");
         }
-        if ($request->perPage>0) {
-            $roles = $main_query->paginate($request->perPage);
-        }
-        else
-            $roles = $main_query->paginate(10);
-        return view("role-index",["roles"=>$roles]);
+        if ($request->perPage > 0) {
+            $roles = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
+        } else
+            $roles = $main_query->orderBy('id', 'desc')->paginate(10);
+        return view("role-index", ["roles" => $roles]);
     }
 
     /**
@@ -59,7 +58,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view("role-edit", ["role"=>$role]);
+        return view("role-edit", ["role" => $role]);
     }
 
     /**

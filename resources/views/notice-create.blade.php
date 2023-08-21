@@ -3,17 +3,17 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Notice Management
+            Posts Management
         </span>
     </div>
     <div class="px-2 px-md-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button"
-                    role="tab" aria-controls="unpaid" aria-selected="true">Add New Notice</button>
+                    role="tab" aria-controls="unpaid" aria-selected="true">Add New Post</button>
             </li>
             <a href="{{ route('notice-index') }}" class="text-decoration-none"><button class="nav-link">View
-                    Notices</button></a>
+                    Posts</button></a>
         </ul>
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
             {{-- add tab --}}
@@ -89,7 +89,7 @@
 
                         </div>
 
-                        <button type="submit" class="btn blue_button">Add Notice</button>
+                        <button type="submit" class="btn blue_button">Add Post</button>
                     </form>
                 </div>
             </div>

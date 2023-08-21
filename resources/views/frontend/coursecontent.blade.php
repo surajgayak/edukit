@@ -4,9 +4,9 @@
     <div class="course-details  mt-1 px-12  py-10 text-white">
         <!-- Breadcrumbs -->
         <div class="text-sm text-white">
-            <a href="#" class="hover:text-gray-700">Home</a>
+            <a href="{{ route('welcomepage') }}" class="hover:text-white">Home</a>
             <span class="mx-2">/</span>
-            <a href="#" class="hover:text-gray-700">Course</a>
+            <a href="#" class="text-white">Course</a>
 
         </div>
 
@@ -22,13 +22,9 @@
             <span class="text-white pl-2">Duration: {{ $courses->duration }}</span>
         </div>
 
-        <!-- Enquiry button -->
-        {{-- <a href="sendenquiry.html">
-            <button class="mt-5 bg-yellow-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded">Enquiry<i
-                    class="fas fa-arrow-right pl-2"></i></button>
-        </a> --}}
+
         <!-- Get Admission button -->
-        <a href="{{ route('getadmission') }}">
+        <a href="{{ route('getadmissionhomepage') }}">
             <button class="mt-5  bg-yellow-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded ml-3">Get
                 Admission<i class="fas fa-arrow-right pl-2"></i></button>
         </a>
@@ -109,12 +105,25 @@
                 <div class="">
                     <h1 class="text-orange-500 text-2xl mt-10">Related Course</h1>
                     <div class="flex pt-10 flex-wrap gap-3  justify-between allcourse ">
-                        <div class="div1 flex items-center gap-2 cursor-pointer">
-                            <img src="https://broadwayinfosys.com/uploads/courses/96701664435119.png" alt=""
-                                class="w-28 h-18">
-                            <span>React JS</span>
-                        </div>
-                        <div class="div1 flex items-center gap-2 cursor-pointer">
+                        @php
+                            $count = 0;
+                        @endphp
+                        @foreach ($relatedcourses as $course)
+                            @if ($count < 4)
+                                <a href="{{ route('coursecontent', $course) }}">
+                                    <div class="div1 flex items-center gap-2 cursor-pointer  w-64">
+                                        <img src="{{ asset('images/photos/' . $course->image) }}" alt=""
+                                            class="w-28 h-18 ">
+                                        <span>{{ $course->title }}</span>
+                                    </div>
+                                </a>
+                                @php
+                                    $count++;
+                                @endphp
+                            @endif
+                        @endforeach
+
+                        {{-- <div class="div1 flex items-center gap-2 cursor-pointer">
                             <img src="https://broadwayinfosys.com/uploads/courses/52921688366553.jpg" alt=""
                                 class="w-28 h-18">
                             <span>Flutter Training</span>
@@ -128,7 +137,7 @@
                             <img src="https://broadwayinfosys.com/uploads/courses/96701664435119.png" alt=""
                                 class="w-28 h-18">
                             <span>Mern Stack</span>
-                        </div>
+                        </div> --}}
 
 
                     </div>

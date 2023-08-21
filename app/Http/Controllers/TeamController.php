@@ -19,9 +19,9 @@ class TeamController extends Controller
             $main_query->where("name", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $teams = $main_query->paginate($request->perPage);
+            $teams = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $teams = $main_query->paginate(10);
+            $teams = $main_query->orderBy('id', 'desc')->paginate(10);
 
         return view("team-index", [
             "teams" => $teams,

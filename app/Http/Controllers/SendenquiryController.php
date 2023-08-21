@@ -85,9 +85,9 @@ class SendenquiryController extends Controller
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $sendenquiries = $main_query->paginate($request->perPage);
+            $sendenquiries = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $sendenquiries = $main_query->paginate(10);
+            $sendenquiries = $main_query->orderBy('id', 'desc')->paginate(10);
 
         // $sendenquiries = Sendenquiry::get();
         return view('sendenquiry-index', [

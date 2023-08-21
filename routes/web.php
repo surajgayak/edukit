@@ -33,7 +33,8 @@ Route::get('/allcourse', [App\Http\Controllers\CourseController::class, 'showdat
 Route::get('/sendenquiry', [App\Http\Controllers\SendenquiryController::class, 'index'])->name('sendenquiry');
 Route::get('/sendcourseenquiry/{upcomming}', [App\Http\Controllers\SendenquiryController::class, 'sendcourseenquiry'])->name('sendcourseenquiry');
 Route::post('/sendenquiry-store', [App\Http\Controllers\SendenquiryController::class, 'store'])->name('sendenquiry-store');
-Route::get('/sendenquiry-store', [App\Http\Controllers\SendenquiryController::class, 'sendenq'])->name('sendenquiry-store');
+Route::get('/sendenquiry-store', [App\Http\Controllers\SendenquiryController::class, 'sendenq'])->name('sendenquiry-index');
+Route::get('/getadmissionhomepage', [App\Http\Controllers\GetadmissionController::class, 'getadmissionhomepage'])->name('getadmissionhomepage');
 Route::get('/getadmission', [App\Http\Controllers\GetadmissionController::class, 'welcpage'])->name('welcpage');
 Route::get('/getadmission/{upcomming}', [App\Http\Controllers\GetadmissionController::class, 'getadmission'])->name('getadmission');
 Route::post('/getadmission', [App\Http\Controllers\GetadmissionController::class, 'store'])->name('getadmissions');
@@ -42,6 +43,9 @@ Route::get('/all-placementpartner', [App\Http\Controllers\FrontendController::cl
 Route::get('/successstories', [App\Http\Controllers\FrontendController::class, 'successstories'])->name('successstories');
 Route::get('/blogdesc/{notice}', [App\Http\Controllers\NoticeController::class, 'blogdesc'])->name('blogdesc');
 Route::get('/paymentmethod/{getadmission}', [App\Http\Controllers\GetadmissionController::class, 'paymentmethod'])->name('paymentmethod');
+
+Route::post('/status-change/{getadmission}', [App\Http\Controllers\GetadmissionController::class, 'statusChange'])->name('status-change');
+
 Route::post('/payment-update/{getadmission}', [App\Http\Controllers\GetadmissionController::class, 'paymentUpdate'])->name('payment-update');
 Route::get('/reviewdetails/{getadmission}', [App\Http\Controllers\GetadmissionController::class, 'review'])->name('reviewdetails');
 
@@ -162,4 +166,5 @@ Route::group(["middleware" => "auth"], function () {
 
     // Getadmission Index
     Route::get('/getadmission-index', [App\Http\Controllers\GetadmissionController::class, 'index'])->name('getadmission-index');
+    Route::get('/getadmission-delete/{getadmission}', [App\Http\Controllers\GetadmissionController::class, 'destroy'])->name('getadmission-delete');
 });

@@ -89,9 +89,24 @@
                                     <td>{{ $course->duration }} </td>
 
 
-                                    <td>{!! $course->introduction !!}</td>
-                                    <td>{!! $course->benefit !!}</td>
-                                    <td>{!! $course->description !!} </td>
+                                    {{-- <td>{!! $course->introduction !!}</td>
+                                    <td>{!! $course->benefit !!}</td> --}}
+                                    <td> @php
+                                        $descriptionWords = str_word_count(strip_tags($course->introduction), 1);
+                                        $limitedDescription = implode(' ', array_slice($descriptionWords, 0, 10));
+                                        echo $limitedDescription . (count($descriptionWords) > 10 ? '...' : '');
+                                    @endphp
+                                    <td> @php
+                                        $descriptionWords = str_word_count(strip_tags($course->benefit), 1);
+                                        $limitedDescription = implode(' ', array_slice($descriptionWords, 0, 10));
+                                        echo $limitedDescription . (count($descriptionWords) > 10 ? '...' : '');
+                                    @endphp
+                                    <td> @php
+                                        $descriptionWords = str_word_count(strip_tags($course->description), 1);
+                                        $limitedDescription = implode(' ', array_slice($descriptionWords, 0, 10));
+                                        echo $limitedDescription . (count($descriptionWords) > 10 ? '...' : '');
+                                    @endphp
+                                    </td>
                                     <td>
                                         @foreach ($course->syllabuses as $item)
                                             <ul>

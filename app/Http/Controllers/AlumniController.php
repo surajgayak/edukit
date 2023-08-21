@@ -17,9 +17,9 @@ class AlumniController extends Controller
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $alumnis = $main_query->paginate($request->perPage);
+            $alumnis = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $alumnis = $main_query->paginate(10);
+            $alumnis = $main_query->orderBy('id', 'desc')->paginate(10);
 
 
         return view('alumni-index', [

@@ -21,11 +21,12 @@
 
         <div class="flex justify-center">
             <!-- Enquiry button -->
-            <button class="mt-10 bg-yellow-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded">VIEW FORM<i
-                    class="fas fa-arrow-right pl-2"></i></button>
+            {{-- <button class="mt-10 bg-yellow-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded">VIEW FORM<i
+                    class="fas fa-arrow-right pl-2"></i></button> --}}
 
             <!-- Get Admission button -->
-            <button class="mt-10 mx-5 bg-cyan-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded">OUR
+            <button class="mt-10 mx-5 bg-cyan-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded"
+                style="background-color: #f96b1c">OUR
                 PAYMENT
                 OPTIONS<i class="fas fa-arrow-down pl-2"></i></button>
         </div>
@@ -36,35 +37,33 @@
         <p class="text-center text-xl font-bold">Online Admission
         </p>
         <br>
-        <!-- <p class="text-center">Please fill out the form below and get enrolled now! All Asterisks (*) fields are
-                                                                                                                                                                                                                                                                                                                                                        mandatory to fill-up.
-                                                                                                                                                                                                                                                                                                                                                    </p> -->
+
     </div>
     <!-- forms lines -->
-    <div class="flex justify-between items-center mx-auto my-8 w-2/5">
-        <div class="circles1 w-7  rounded-full bg-green-600 text-center text-white font-thin">1</div>
+    <div class="flex justify-between items-center mx-auto my-8 w-2/5 threedots">
+        <div class="circles1 w-7  rounded-full  text-center text-white font-thin"style="background-color: #f96b1c">1</div>
         <div class="line h-px bg-gray-400 w-64"></div>
-        <div class="circles2 w-7  rounded-full bg-gray-400  text-center text-white font-thin"
-            style="border:3px solid green">
+        <div class="circles2 w-7  rounded-full   text-center text-white font-thin bg-green-600"
+            style="background-color: #f96b1c">
             2
         </div>
         <div class="line h-px bg-gray-400 w-64"></div>
         <div class="circles3 w-7  rounded-full bg-gray-400 text-center  text-white font-thin">3</div>
     </div>
 
-    <div class="flex justify-between items-center mx-auto my-1 " style="width:50%">
+    <div class="flex justify-between items-center mx-auto my-1 threeinfo" style="width:50%">
         <div class="circles1  rounded-full  text-center  font-thin ">Personal Information</div>
         <div class="circles2   rounded-full   text-center  font-thin">Payment Information</div>
         <div class="circles3  rounded-full  text-center   font-thin">Review Details</div>
     </div>
 
     <!-- select payment option -->
-    <div class=" m-auto mt-20 w-1/2 ">
+    <div class=" m-auto mt-20 md:w-1/2 p-2 ">
         <h1 class="text-lg my-5">Select Payment Option</h1>
         <div id="accordion-collapse" data-accordion="collapse">
-            <div class="flex flex-wrap justify-start gap-5">
+            <div class="flex flex-wrap justify-start gap-5 ">
                 @foreach ($paymentmethods as $paymentmethod)
-                    <div class="esewa cursor-pointer image-container border">
+                    <div class="esewa cursor-pointer image-container border ">
                         <span data-accordion-target="#accordion-collapse-body-{{ $paymentmethod->id }}" aria-expanded="true"
                             aria-controls="accordion-collapse-body-{{ $paymentmethod->id }}">
                             <img src="{{ asset('images/medias/' . $paymentmethod->logo) }}" class="w-32 h-20">
@@ -75,7 +74,7 @@
             {{-- accordian start --}}
 
             @foreach ($paymentmethods as $paymentmethod)
-                <div id="accordion-collapse-body-{{ $paymentmethod->id }}" class="hidden"
+                <div id="accordion-collapse-body-{{ $paymentmethod->id }}" class="hidden text-white"
                     aria-labelledby="accordion-collapse-heading-{{ $paymentmethod->id }}">
                     <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <h2 class="text-center pb-3"> {{ $paymentmethod->title }}</h2>
@@ -114,8 +113,8 @@
                                 Previous</button>
                         </a> --}}
 
-                    <button type="submit" class="bg-blue-700 px-3 py-2 text-white rounded ml-4 w-32"> Submit <i
-                            class="fas fa-arrow-right">
+                    <button type="submit" class=" px-3 py-2 text-white rounded ml-4 w-32"
+                        style="background-color: #f96b1c"> Submit <i class="fas fa-arrow-right">
                         </i></button>
 
             </form>

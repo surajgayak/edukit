@@ -63,9 +63,9 @@ class HomeController extends Controller
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $users = $main_query->paginate($request->perPage);
+            $users = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $users = $main_query->paginate(10);
+            $users = $main_query->orderBy('id', 'desc')->paginate(10);
         return view('user-index', ["users" => $users]);
     }
 

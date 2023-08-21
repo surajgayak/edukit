@@ -5,9 +5,9 @@
     <div class="course-details  mt-1 px-12  py-10 text-white">
         <!-- Breadcrumbs -->
         <div class="text-sm text-white">
-            <a href="#" class="hover:text-gray-700">Home</a>
+            <a href="{{ route('welcomepage') }}" class="text-white">Home</a>
             <span class="mx-2">/</span>
-            <a href="#" class="hover:text-gray-700">Classes</a>
+            <a href="#" class="text-white">Classes</a>
 
         </div>
 
@@ -27,9 +27,9 @@
     {{-- <h1 class="pt-8  pl-10 text-2xl font-bold text-center">Running Classes</h1> --}}
     <div class="classes mt-10 flex flex-wrap justify-center gap-10">
         @foreach ($upcommings as $upcomming)
-            <div class=" w-70 bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="{{ asset('images/photos/' . $upcomming->courses->image) }}" alt="Course Image" class=""
-                    style="width:300px;height:200px;">
+            <div class=" w-80 bg-white shadow-lg rounded-lg overflow-hidden upc">
+                <img src="{{ asset('images/photos/' . $upcomming->courses->image) }}" alt="Course Image" class="w-80"
+                    style="height:200px;">
                 <div class="px-2 pt-4">
                     <h2 class="text-xl font-semibold text-gray-800">{{ $upcomming->courses->title }}</h2>
                     <p class="text-gray-600 mt-2">Duration:{{ $upcomming->courses->duration }}</p>

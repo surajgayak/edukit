@@ -25,7 +25,7 @@
                             <label for="recipient-name" class="col-form-label"> Title:</label>
                             <input type="text" name="title" class="form-control" id="Currency-name"
                                 placeholder="Title " value="{{ old('representation') }}">
-                            </select>
+
                             @if ($errors->has('title'))
                                 <div class="error text-danger">{{ $errors->first('title') }}
                                 </div>

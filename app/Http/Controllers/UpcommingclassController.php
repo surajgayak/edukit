@@ -18,9 +18,9 @@ class UpcommingclassController extends Controller
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $upcomming = $main_query->paginate($request->perPage);
+            $upcomming = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $upcomming = $main_query->paginate(10);
+            $upcomming = $main_query->orderBy('id', 'desc')->paginate(10);
 
 
         return view('upcommingclass-index', [

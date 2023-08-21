@@ -100,10 +100,10 @@
 
                     <div class="iocn-link">
                         <i class='mainI bi bi-list-nested'></i>
-                        <span class="link_name">Notice Category</span>
+                        <span class="link_name">Posts Category</span>
                         <ul class="sub-menu blank">
                             <li>
-                                <div class="link_name"> Notice Category</div>
+                                <div class="link_name"> Posts Category</div>
                             </li>
                         </ul>
                     </div>
@@ -114,10 +114,10 @@
 
                     <div class="iocn-link">
                         <i class='mainI bi bi-easel2'></i>
-                        <span class="link_name"> Notices</span>
+                        <span class="link_name"> Posts</span>
                         <ul class="sub-menu blank">
                             <li>
-                                <div class="link_name">Notices</div>
+                                <div class="link_name">Posts</div>
                             </li>
                         </ul>
                     </div>
@@ -141,7 +141,7 @@
                 <a href="{{ route('type-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-list-nested'></i>
+                        <i class='mainI bi bi-collection'></i>
                         <span class="link_name">Media Type </span>
                         <ul class="sub-menu blank">
                             <li>
@@ -184,7 +184,7 @@
                 <a href="{{ route('paymentmethod-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-file-earmark-ruled'></i>
+                        <i class='mainI bi bi-currency-exchange'></i>
                         <span class="link_name"> Payment Method</span>
                         <ul class="sub-menu blank">
                             <li>
@@ -212,7 +212,7 @@
                 <a href="{{ route('sendenquiry-store') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-book'></i>
+                        <i class='mainI bi bi-chat-dots-fill'></i>
                         <span class="link_name">Enquiries</span>
                         <ul class="sub-menu blank">
                             <li>
@@ -240,7 +240,7 @@
                 <a href="{{ route('syllabus-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-book'></i>
+                        <i class='mainI bi bi-card-list'></i>
                         <span class="link_name">Syllabus</span>
                         <ul class="sub-menu blank">
                             <li>
@@ -254,7 +254,7 @@
                 <a href="{{ route('upcommingclass-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-book'></i>
+                        <i class='mainI bi bi-house-add'></i>
                         <span class="link_name">Upcoming Class</span>
                         <ul class="sub-menu blank">
                             <li>
@@ -268,7 +268,7 @@
                 <a href="{{ route('alumni-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-book'></i>
+                        <i class='mainI bi bi-people'></i>
                         <span class="link_name">Alumni</span>
                         <ul class="sub-menu blank">
                             <li>
@@ -282,7 +282,7 @@
                 <a href="{{ route('setting-create') }}">
 
                     <div class="iocn-link">
-                        <i class='mainI bi bi-book'></i>
+                        <i class='mainI bi bi-gear-fill'></i>
                         <span class="link_name">Settings</span>
                         <ul class="sub-menu blank">
                             <li>

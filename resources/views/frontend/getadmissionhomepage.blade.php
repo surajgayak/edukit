@@ -21,7 +21,7 @@
 
         <div class="flex justify-center">
             <!-- Enquiry button -->
-            <button class="mt-10  text-white font-semibold py-3 px-4 rounded" style="background-color: #f96b1c">VIEW FORM<i
+            <button class="mt-10 bg-yellow-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded">VIEW FORM<i
                     class="fas fa-arrow-down pl-2"></i></button>
 
             <!-- Get Admission button -->
@@ -39,15 +39,15 @@
         </p>
     </div>
     <!-- forms lines -->
-    <div class="flex justify-between items-center mx-auto my-8 w-2/5 threedots">
-        <div class="circles1 w-7 rounded-full text-center text-white font-thin" style="background-color: #f96b1c">1</div>
+    <div class="flex justify-between items-center mx-auto my-8 w-2/5">
+        <div class="circles1 w-7  rounded-full bg-green-400 text-center text-white font-thin">1</div>
         <div class="line h-px bg-gray-400 w-64"></div>
-        <div class="circles2 w-7 rounded-full bg-gray-400  text-center text-white font-thin">2</div>
+        <div class="circles2 w-7  rounded-full bg-gray-400  text-center text-white font-thin">2</div>
         <div class="line h-px bg-gray-400 w-64"></div>
-        <div class="circles3 w-7 rounded-full bg-gray-400 text-center  text-white font-thin">3</div>
+        <div class="circles3 w-7  rounded-full bg-gray-400 text-center  text-white font-thin">3</div>
     </div>
 
-    <div class="flex justify-between items-center mx-auto my-1 threeinfo" style="width:50%">
+    <div class="flex justify-between items-center mx-auto my-1 " style="width:50%">
         <div class="circles1  rounded-full  text-center  font-thin ">Personal Information</div>
         <div class="circles2   rounded-full   text-center  font-thin">Payment Information</div>
         <div class="circles3  rounded-full  text-center   font-thin">Review Details</div>
@@ -100,14 +100,16 @@
                     placeholder="Enter your contact number">
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm  mb-2" for="course">Course<sup
+                <label class="block text-gray-700 text-sm  mb-2" for="course">Available Courses<sup
                         class="text-red-500 z-1">*</sup></label>
                 <select id="course" name="upcommingclasses_id" required
                     class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="">
+                    @foreach ($upcommings as $upcoming)
+                        <option value="{{ $upcoming->id }}">
+                            {{ $upcoming->courses->title }}</option>
+                    @endforeach
 
-                    <option value="{{ $upcomming->id }}">
-                        {{ $upcomming->courses->title }}</option>
 
                 </select>
             </div>
@@ -144,7 +146,7 @@
 
 
             <input type="submit" class="bg-blue-700 px-3 py-2 text-white rounded w-32 text-center cursor-pointer "
-                style="background-color: #f96b1c" value="Next">
+                value="Next">
             </i>
 
 

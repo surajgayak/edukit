@@ -5,9 +5,9 @@
     <div class="course-details  mt-1 px-12  py-10 text-white">
         <!-- Breadcrumbs -->
         <div class="text-sm text-white">
-            <a href="#" class="hover:text-gray-700">Home</a>
+            <a href="{{ route('welcomepage') }}" class="text-white">Home</a>
             <span class="mx-2">/</span>
-            <a href="#" class="hover:text-gray-700">Gallery</a>
+            <a href="#" class="text-white">Gallery</a>
 
         </div>
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edukit</title>
-    <link rel="icon" href="https://edukits.co/wp-content/uploads/Brandmark_Web1.svg" type="image/x-icon" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('style/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,13 +17,12 @@
 
 
 
-
 </head>
 
 <body>
     <!-- navbar -->
     <script src="//unpkg.com/alpinejs" defer></script>
-    <nav aria-label="navbar" x-data class="border-b bg-white fixed w-full z-50  ">
+    <nav aria-label="navbar" x-data class="border-b fixed w-full z-50 " style="background-color: #f0fbfaf0">
         <div class="mx-auto max-w-screen-xl  py-2 shadow-sm flex-wrap  ">
             <div
                 class="flex items-center w-11/12 m-auto flex-wrap sm:justify-center sm:gap-3  md:justify-between   main ">
@@ -50,41 +49,7 @@
                                         </a>
                                     @endforeach
 
-                                    {{-- <a href="">
-                                        <div class="flex cursor-pointer justify-start items-center hover:bg-gray-50">
-                                            <li class="pl-5 ">MERN Stack </li>
-                                            <i class="fas fa-chevron-right ml-auto pr-3"></i>
-                                        </div>
-                                    </a>
-                                    <a href="">
 
-                                        <div class="flex cursor-pointer justify-start items-center hover:bg-gray-50">
-                                            <li class="pl-5 ">Flutter </li>
-                                            <i class="fas fa-chevron-right ml-auto pr-3"></i>
-                                        </div>
-                                    </a>
-
-                                    <a href="">
-
-                                        <div class="flex cursor-pointer justify-start items-center hover:bg-gray-50">
-                                            <li class="pl-5 ">Digital Marketing </li>
-                                            <i class="fas fa-chevron-right ml-auto pr-3"></i>
-                                        </div>
-                                    </a>
-                                    <a href="">
-
-                                        <div class="flex cursor-pointer justify-start items-center hover:bg-gray-50">
-                                            <li class="pl-5 ">React Js</li>
-                                            <i class="fas fa-chevron-right ml-auto pr-3"></i>
-                                        </div>
-                                    </a>
-                                    <a href="">
-
-                                        <div class="flex cursor-pointer justify-start items-center hover:bg-gray-50">
-                                            <li class="pl-5 ">Python/Django </li>
-                                            <i class="fas fa-chevron-right ml-auto pr-3"></i>
-                                        </div>
-                                    </a> --}}
                                     <hr>
                                     <div>
                                         <a href="{{ route('allcourse') }}">
@@ -109,8 +74,9 @@
                     <span class="px-2 call font-bold" style="font-size: 10px ;">Call us: 9841002000<br>01-4111849 /
                         9808724535</span>
                     <a href="{{ route('sendenquiry') }}"
-                        class="flex cursor-pointer items-center gap-x-1 rounded-lg bg-blue-600 px-5 ml-5 py-3 text-sm
-                        font-medium text-gray-50 hover:bg-blue-700">
+                        class="flex cursor-pointer items-center gap-x-1 rounded-lg  px-5 ml-5 py-3 text-sm
+                        font-medium text-gray-50 hover:bg-blue-700"
+                        style="background-color: #f96b1c">
                         <span>Enquiry</span>
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
@@ -124,9 +90,9 @@
     </nav>
 
     <!-- menu -->
-    <div class="container max-w-full pt-28   ">
+    <div class="container max-w-full pt-28   " style="background-color: #ffffff">
         <div class="w-full overflow-x-auto">
-            <ul class="flex flex-nowrap md:w-3/5 sm:w-full  justify-around mt-2  gap-3 m-auto space-x-2 menu ">
+            <ul class="flex flex-nowrap md:w-3/5 sm:w-full  justify-around my-1  gap-3 m-auto space-x-2 menu ">
                 <li class="p-2 font-bold  w-34  text-center mt-1 "><a href="{{ route('gallery') }}"> Gallery</a></li>
                 <li class="p-2 font-bold  w-34  text-center mt-1 "><a href="{{ route('aboutus') }}"> About Us</a></li>
                 <li class="p-2 font-bold  w-34  text-center mt-1 "><a href="{{ route('classes') }}">Upcoming
@@ -140,104 +106,103 @@
 
     @yield('content')
 
-    <footer aria-label="Site footer" class=" bg-gradient-to-b from-blue-900 to-gray-900 pl-14 py-10 mt-4 md:py-10">
+    <footer aria-label="Site footer" class=" bg-gradient-to-b from-stone-800 to-gray-800 pl-14 py-10 mt-4 md:py-10">
         <div class="mx-auto max-w-screen-xl">
             <div class="grid grid-cols-12 gap-y-8 sm:gap-8">
                 <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
                     <ul class="flex flex-col gap-y-2">
-                        <li class="text-xl font-medium text-gray-200">COMPANY</li>
+                        <li class="text-xl font-bold text-white">COMPANY</li>
                         <li>
                             <a href="{{ route('gallery') }}"
-                                class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Our Gallery</a>
+                                class="cursor-pointer text-md text-white hover:text-gray-300/60">Our Gallery</a>
                         </li>
                         <li>
                             <a href="{{ route('aboutus') }}"
-                                class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">About Us</a>
+                                class="cursor-pointer text-md text-white hover:text-gray-300/60">About Us</a>
                         </li>
                         <li>
                             <a href="{{ route('contact') }}"
-                                class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Contact Us</a>
+                                class="cursor-pointer text-md text-white hover:text-gray-300/60">Contact Us</a>
                         </li>
                         <li>
                             <a href="{{ route('classes') }}"
-                                class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Our Classes</a>
+                                class="cursor-pointer text-md text-white hover:text-gray-300/60">Our Classes</a>
                         </li>
                         {{-- <li>
                             <a
-                                href="{{ route('placementpartner',) }}"class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Our
+                                href="{{ route('placementpartner',) }}"class="cursor-pointer text-md text-white hover:text-gray-300/60">Our
                                 Placement
                                 Partners</a>
                         </li> --}}
                         <li>
                             <a href="{{ route('blog') }}"
-                                class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Blog</a>
+                                class="cursor-pointer text-md text-white hover:text-gray-300/60">Blog</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
                     <ul class="flex flex-col gap-y-2">
-                        <li class="text-lg font-medium text-gray-200">HELP</li>
+                        <li class="text-lg font-bold text-white">HELP</li>
 
 
 
                         <li>
-                            <a class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Disclaimer</a>
+                            <a class="cursor-pointer text-md text-white hover:text-gray-300/60">Disclaimer</a>
                         </li>
 
                         <li>
-                            <a class="cursor-pointer text-sm text-gray-300 hover:text-gray-300/60">Terms &
+                            <a class="cursor-pointer text-md text-white hover:text-gray-300/60">Terms &
                                 Conditions</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
                     <ul class="flex flex-col gap-y-2">
-                        <li class="text-lg font-medium text-gray-200">CONTACT US</li>
+                        <li class="text-lg font-bold text-white">CONTACT US</li>
                         <li>
-                            <p class=" text-sm text-gray-300 hover:text-gray-300/60">
+                            <p class=" text-md text-white hover:text-gray-300/60">
                                 {{ $settings->name }}
                             </p>
                         </li>
                         <li>
-                            <a class=" text-sm text-gray-300 hover:text-gray-300/60">
+                            <a class=" text-md text-white hover:text-gray-300/60">
                                 {{ $settings->location }}
                             </a>
                         </li>
                         <li>
-                            <a class=" text-sm text-gray-300 hover:text-gray-300/60">{{ $settings->email }}</a>
+                            <a class=" text-md text-white hover:text-gray-300/60">{{ $settings->email }}</a>
                         </li>
                         <li>
-                            <a
-                                class=" text-sm text-gray-300 hover:text-gray-300/60">{{ $settings->whatsapp_number }}</a>
+                            <a class=" text-md text-white hover:text-gray-300/60">{{ $settings->whatsapp_number }}</a>
                         </li>
                         <li>
-                            <a class=" text-sm text-gray-300 hover:text-gray-300/60">{{ $settings->viber_number }}</a>
+                            <a class=" text-md text-white hover:text-gray-300/60">{{ $settings->viber_number }}</a>
                         </li>
 
                     </ul>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3">
                     <div>
-                        <a
-                            class="flex  items-center gap-x-1 text-gray-300 transition-all duration-300 hover:opacity-80">
+                        <a class="flex  items-center gap-x-1 text-white transition-all duration-300 hover:opacity-80">
                             <div>
 
-                                <span class="text-2xl font-bold text-yellow-600">{{ $settings->name }}</span>
+                                <span class="text-2xl font-bold "
+                                    style="color: #e1fffe ">{{ $settings->name }}</span>
                             </div>
                         </a>
-                        <div class="mt-3 text-sm text-gray-300">{{ $settings->location }}</div>
+                        <div class="mt-3 text-md text-white">{{ $settings->location }}</div>
 
                         <p class="pt-2">
                             <a
-                                class=" font-medium text-gray-300   hover:text-gray-300/60 focus:text-gray-300/60 ">{{ $settings->email }}</a>
+                                class=" font-medium text-white   hover:text-gray-300/60 focus:text-gray-300/60 ">{{ $settings->email }}</a>
                         </p>
                         <p class="pt-2">
-                            <a class=" font-medium text-gray-300  hover:text-gray-300/60 focus:text-gray-300/60 ">Estd
+                            <a class=" font-medium text-white  hover:text-gray-300/60 focus:text-gray-300/60 ">Estd
                                 :
                                 {{ $settings->establish_date }}</a>
                         </p>
 
-                        <a class="my-3 block  text-sm text-gray-300">{{ $settings->mobile_number }}/
+                        <a class="my-3 block  text-sm text-white">{{ $settings->mobile_number }}/
                             {{ $settings->landline_number }}</a>
 
                         <ul class="mt-6 flex gap-6">

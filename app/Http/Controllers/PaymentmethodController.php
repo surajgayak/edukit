@@ -18,9 +18,9 @@ class PaymentmethodController extends Controller
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $paymentmethod = $main_query->paginate($request->perPage);
+            $paymentmethod = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $paymentmethod = $main_query->paginate(10);
+            $paymentmethod = $main_query->orderBy('id', 'desc')->paginate(10);
         return view("paymentmethod-index", ["payments" => $paymentmethod]);
     }
 

@@ -18,9 +18,9 @@ class DownloadController extends Controller
                 ->orWhere("detail", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $downloads = $main_query->paginate($request->perPage);
+            $downloads = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $downloads = $main_query->paginate(10);
+            $downloads = $main_query->orderBy('id', 'desc')->paginate(10);
         return view("downloads-index", ["downloads" => $downloads]);
     }
 
@@ -95,7 +95,7 @@ class DownloadController extends Controller
             $destinationPath = public_path('/images/downloads');
             $image->move($destinationPath, $input['image_name']);
             $data['file'] = $input['image_name'];
-        }else{
+        } else {
             $data = $request->validate([
                 "title" => ["required", "string"],
                 "type" => ["required", "string"],

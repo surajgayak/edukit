@@ -12,37 +12,34 @@
                 <label class="block text-gray-700 text-sm  mb-2 text-thin" for="name">Name<sup
                         class="text-red-500 z-1 ">*</sup></label>
                 <input type="text" id="name" name="name" required
-                    class=" bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight"
+                    class=" bg-gray-100 text-sm   rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight"
                     placeholder="Enter your name">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm  mb-2" for="email">Email<sup
                         class="text-red-500 z-1">*</sup></label>
                 <input type="email" id="email" name="email" required
-                    class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight"
+                    class="bg-gray-100 text-sm   rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight"
                     placeholder="Enter your email">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm  mb-2" for="phone">Contact Number<sup
                         class="text-red-500 z-1">*</sup></label>
                 <input type="number" id="contact" name="contact" required
-                    class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight"
+                    class="bg-gray-100 text-sm   rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight"
                     placeholder="Enter your contact number">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm  mb-2" for="course">Course<sup
                         class="text-red-500 z-1">*</sup></label>
                 <select id="course" name="course" required
-                    class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight"
-                    placeholder="">
+                    class="bg-gray-100 text-sm   rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight" placeholder="">
                     <option value="">Select a course</option>
-                    {{-- @if ($upcommings)
-                        <option value="{{ $upcommings->course_id }}">{{ $upcommings->course_id }}</option>
-                    @else --}}
+
                     @foreach ($courses as $course)
                         <option value="{{ $course->title }}">{{ $course->title }}</option>
                     @endforeach
-                    {{-- @endif --}}
+
 
                 </select>
             </div>
@@ -50,19 +47,19 @@
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm  mb-2" for="school">School/Colleges Name</label>
                 <input type="text" id="college" name="college" required
-                    class="bg-gray-100 text-sm appearance-none border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    class="bg-gray-100 text-sm   rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight"
                     placeholder="Enter your school/college name">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm  mb-2" for="school">Message</label>
                 <textarea id="school" rows="7" cols="50" name="message" required
-                    class="bg-gray-100 text-sm appearance-none border rounded w-full  py-2  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    class="bg-gray-100 text-sm appearance-none  rounded w-full  py-2  text-gray-700 leading-tight"
                     placeholder="Tell us about you">
             </textarea>
             </div>
             <div class="flex items-center justify-center">
                 <input type="submit" value="Submit"
-                    class="bg-blue-500 text-sm hover:bg-blue-700 text-white  py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+                    class="bg-blue-500 text-sm hover:bg-blue-700 text-white  py-2 px-4 rounded cursor-pointer">
             </div>
         </form>
     </div>

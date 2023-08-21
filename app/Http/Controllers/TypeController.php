@@ -17,9 +17,9 @@ class TypeController extends Controller
             $main_query->where("name", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $types = $main_query->paginate($request->perPage);
+            $types = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $types = $main_query->paginate(10);
+            $types = $main_query->orderBy('id', 'desc')->paginate(10);
         return view("type-index", [
             "types" => $types
         ]);

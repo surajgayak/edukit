@@ -13,15 +13,22 @@ class NoticeController extends Controller
      */
     public function index(Request $request)
     {
+        $categories = Category::get();
         $main_query = Notice::query();
+        if ($request->category > 0) {
+            $main_query->where("category_id", $request->category);
+        }
         if ($request->keyword) {
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $notices = $main_query->paginate($request->perPage);
+            $notices = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $notices = $main_query->paginate(10);
-        return view("notice-index", ["notices" => $notices]);
+            $notices = $main_query->orderBy('id', 'desc')->paginate(10);
+        return view("notice-index", [
+            "notices" => $notices,
+            "categories" => $categories
+        ]);
     }
 
     /**

@@ -3,18 +3,18 @@
 @section('content')
     <div class="row px-2 pt-4">
         <span class="h2 px-4 fw-semibold text-center" style="color: #004781;">
-            Notice Management
+            Posts Management
         </span>
     </div>
     <div class="px-2 px-md-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a href="{{ route('notice-create') }}" class="text-decoration-none"><button class="nav-link">Add
-                        New Notice</button></a>
+                        New Post</button></a>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="paid-tab" data-bs-toggle="tab" data-bs-target="#paid" type="button"
-                    role="tab" aria-controls="paid" aria-selected="false">View Notices</button>
+                    role="tab" aria-controls="paid" aria-selected="false">View Posts</button>
             </li>
         </ul>
         <div class="tab-content py-2 navsTabsShadow" id="myTabContent">
@@ -28,6 +28,17 @@
                         <option value="100" {{ request()->perPage == 100 ? 'selected' : '' }}>100</option>
                     </select>
                     Entries
+                </div>
+                <div class="col-9 col-md-4 d-flex justify-content-end search-position">
+                    <select class="form-select" id="category" onchange="go()" aria-label="Default select example">
+                        <option {{ request()->category == 0 ? 'selected' : '' }} value="0">All categories</option>
+
+                        @foreach ($categories as $category)
+                            <option {{ request()->category == $category->id ? 'selected' : '' }}
+                                value="{{ $category->id }} ">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+
                 </div>
                 <div class="col-9 col-md-4 d-flex justify-content-end search-position">
                     <input class="table-search-box" type="text" name="keyword" id="keyword" placeholder="Keyword"
@@ -96,7 +107,11 @@
                                     <td><object data="{{ asset('images/photos/' . $notice->image) }}" width="100"
                                             height="100"></object></td>
                                     <td>{{ $notice->priority }}</td>
-                                    <td>{!! $notice->description !!}
+                                    <td> @php
+                                        $descriptionWords = str_word_count(strip_tags($notice->description), 1);
+                                        $limitedDescription = implode(' ', array_slice($descriptionWords, 0, 10));
+                                        echo $limitedDescription . (count($descriptionWords) > 10 ? '...' : '');
+                                    @endphp
                                     </td>
                                     <td class="text-nowrap">
                                         <div class="container-fluid d-flex">
@@ -152,12 +167,14 @@
     <script>
         let keywordEl = document.getElementById("keyword");
         let perPageEl = document.getElementById("perPage");
+        let categoryEl = document.getElementById("category");
         const baseUrl = 'https://api.example.com';
 
         function go() {
             const queryParams = {
                 keyword: keywordEl.value,
                 perPage: perPageEl.value,
+                category: categoryEl.value,
                 page: 1,
             };
             const url = new URL("{{ url('/') }}/notice-index");

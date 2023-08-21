@@ -56,7 +56,6 @@ html {
     border-radius: 50%;
     /* background: url("https://tse2.mm.bing.net/th?id=OIP.fZWdNGbvu1n7OCf8_2STNgHaFH&pid=Api&P=0&h=80"); */
     border: 3px solid black;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,9 +129,7 @@ html {
     padding: 20px;
     background-color: #f0f0f0;
 }
-/* The CSS for the scaling effect remains the same */
 
-/* Add styles for the animation */
 .start-animation {
     opacity: 1;
 }
@@ -149,7 +146,7 @@ html {
     }
     .middle {
         padding-top: 10px;
-        /* background-color: gray; */
+        margin-left: 5px !important;
     }
     .container li {
         font-size: 10px;
@@ -164,11 +161,7 @@ html {
     .container {
         padding-top: 210px !important;
     }
-    /* .info {
-    display: flex !important;
-    justify-content: start !important;
-    flex-direction: column;
-  } */
+
     .content {
         display: flex;
         justify-content: space-around !important;
@@ -219,9 +212,55 @@ html {
         width: 100% !important;
     }
     .homeslider {
-        width: 400px !important;
+        width: 100% !important;
+        height: 300px !important;
     }
     .homeslider img {
-        width: 400px !important;
+        width: 100% !important;
+        height: 300px !important;
+        /* background-size: cover !important; */
+    }
+    .homeslider {
+        width: auto !important;
+        height: 300px !important;
+    }
+    /* .homeslider img {
+        width: auto !important;
+        height: 200px !important;
+    } */
+    .proedu {
+        display: none;
+    }
+    .pro1 {
+        display: none;
+    }
+    .course1 {
+        width: 22rem !important;
+    }
+    footer {
+        padding-left: 1rem !important;
+    }
+    .about {
+        padding: 1rem !important;
+    }
+    .upc {
+        width: 22rem !important;
+    }
+    .upc img {
+        width: 22rem !important;
+    }
+    .home {
+        flex-wrap: wrap-reverse !important;
+    }
+    .threedots {
+        width: 90% !important;
+    }
+    .threeinfo {
+        width: 90% !important;
+    }
+    .circles1,
+    .circles2,
+    .circles3 {
+        width: 2.75rem !important;
     }
 }

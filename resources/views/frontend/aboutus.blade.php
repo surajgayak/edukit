@@ -2,18 +2,18 @@
 @section('content')
     <!-- About Us -->
     @foreach ($aboutIntro as $about)
-        <div class="  about flex flex-wrap justify-around items-center  p-10  bg-gray-50">
+        <div class="  about flex flex-wrap-reverse justify-around items-center  p-10  bg-gray-50">
 
             <div class="aboutdesc " style="width:500px;">
 
-                <h1 class="text-blue-600 font-bold text-5xl">{{ $about->title }}
+                <h1 class="text-teal-500 font-bold text-5xl">{{ $about->title }}
                 </h1>
                 <p class="text-sm pt-3 "> {!! $about->description !!}
                 </p>
             </div>
             <div class="image  ">
                 <img src="{{ asset('images/photos/' . $about->image) }}"
-                    style="border-right:10px solid rgb(64, 64, 255);border-top: 10px solid rgb(64, 64, 255); width:430px;height:450px">
+                    style="border-right:10px solid rgb(48, 202, 161);border-top: 10px solid rgb(48, 202, 161); width:430px;height:450px">
             </div>
         </div>
     @endforeach
@@ -24,7 +24,7 @@
     <div class="flex justify-center text-center text-justify  flex-wrap mt-10">
         @foreach ($aboutCard as $item)
             <div class="service-item flex flex-col items-center p-4 w-96">
-                <i class="fas fa-window-maximize text-4xl bg-blue-100 text-blue-500 p-3 rounded "></i>
+                <i class="fas fa-window-maximize text-4xl bg-teal-100 text-teal-600 p-3 rounded "></i>
                 <h3 class="title text-lg font-semibold pt-5">{{ $item->title }}</h3>
                 <p class="description text-sm text-gray-600 pt-5 text-center px-5">{!! $item->description !!}
             </div>
@@ -38,18 +38,20 @@
     <div class="flex flex-wrap justify-center mt-10 p-10 gap-10 bg-gray-100 ">
         <div class="years m-5 p-5 text-center">
             <i class="fas fa-clock text-4xl text-orange-400 "></i>
-            <p class="count text-5xl pt-5 font-bold text-blue-600 count">5+</p>
-            <p class="text-thin text-blue-400">YEARS</p>
+            <p class="count text-5xl pt-5 font-bold text-teal-500 count">5+</p>
+            <p class="font-semibold text-teal-700">YEARS</p>
         </div>
         <div class="course m-5 p-5 text-center">
             <i class="fas fa-book text-4xl text-orange-400"></i>
-            <p class="count text-5xl pt-5 font-bold text-blue-600 count">{{ DB::table('courses')->count() }}</p>
-            <p class="text-thin text-blue-400">COURSES</p>
+            <p class="count text-5xl pt-5 font-bold text-teal-500 count">{{ DB::table('courses')->count() }}</p>
+            <p class="font-semibold text-teal-700">COURSES</p>
         </div>
         <div class="student m-5 p-5 text-center">
             <i class="fas fa-heart text-4xl text-orange-400"></i>
-            <p class="count text-5xl pt-5 font-bold text-blue-600 count">1000+</p>
-            <p class="text-thin text-center text-blue-400">STUDENTS</p>
+            @foreach ($settings as $setting)
+                <p class="count text-5xl pt-5 font-bold text-teal-500 count">{{ $setting->numberof_student }}+</p>
+            @endforeach
+            <p class="font-semibold text-center text-teal-700">STUDENTS</p>
         </div>
     </div>
 
@@ -57,11 +59,11 @@
     <section>
         <div class="mx-auto max-w-screen-xl px-4 py-12">
             <div class="mx-auto mb-8 max-w-lg text-center">
-                <h2 class="text-3xl font-black sm:text-3xl text-blue-600 p-5">Our Professional Teams</h2>
+                <h2 class="text-3xl font-black font-bold sm:text-3xl text-teal-500 p-5">Our Professional Teams</h2>
             </div>
             <div class="gap-y-6 sm:gap-6 flex justify-center flex-wrap ">
                 @foreach ($teams as $team)
-                    <div class=" w-64 h-auto shadow-lg">
+                    <div class=" w-72 h-auto shadow-lg">
                         <a class="group block text-center">
                             <img width="600" height="600" class="aspect-[2/2] rounded-lg object-fit"
                                 src="{{ asset('images/photos/' . $team->photo) }}" alt="team member" />

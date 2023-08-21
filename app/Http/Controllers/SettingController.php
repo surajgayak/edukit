@@ -17,9 +17,9 @@ class SettingController extends Controller
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $setting = $main_query->paginate($request->perPage);
+            $setting = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $setting = $main_query->paginate(10);
+            $setting = $main_query->orderBy('id', 'desc')->paginate(10);
 
 
         return view('setting-index', [

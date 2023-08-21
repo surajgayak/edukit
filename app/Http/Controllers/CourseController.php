@@ -17,9 +17,9 @@ class CourseController extends Controller
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $course = $main_query->paginate($request->perPage);
+            $course = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $course = $main_query->paginate(10);
+            $course = $main_query->orderBy('id', 'desc')->paginate(10);
 
 
         return view('course-index', [
@@ -134,8 +134,10 @@ class CourseController extends Controller
     }
     public function coursecontent(Course $course)
     {
+        $relatedcourses = Course::get();
         return view('frontend.coursecontent', [
-            'courses' => $course
+            'courses' => $course,
+            'relatedcourses' => $relatedcourses
         ]);
     }
 

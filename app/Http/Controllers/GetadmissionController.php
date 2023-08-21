@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdmissionInfo;
+use App\Mail\EdukitAdmissions;
 use App\Models\Getadmission;
 use App\Models\Paymentmethod;
 use App\Models\Upcommingclass;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class GetadmissionController extends Controller
 {
@@ -19,9 +22,9 @@ class GetadmissionController extends Controller
             $main_query->where("title", "LIKE", "%" . $request->keyword . "%");
         }
         if ($request->perPage > 0) {
-            $getadmission = $main_query->paginate($request->perPage);
+            $getadmission = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $getadmission = $main_query->paginate(10);
+            $getadmission = $main_query->orderBy('id', 'desc')->paginate(10);
 
 
         return view('getadmission-index', [
@@ -89,7 +92,8 @@ class GetadmissionController extends Controller
      */
     public function destroy(Getadmission $getadmission)
     {
-        //
+        $getadmission->delete();
+        return redirect('/getadmission-index');
     }
 
     public function getadmission(Upcommingclass $upcomming)
@@ -127,14 +131,37 @@ class GetadmissionController extends Controller
         $image->move($destinationPath, $input['image_name']);
         $data['payment_image'] = $input['image_name'];
         $data['status'] = "pending";
-        // dd($data);
+
         $getadmission->update($data);
+        Mail::to($getadmission->email)->send(new AdmissionInfo($getadmission));
+        Mail::to('info@kitwosd.com')->send(new EdukitAdmissions($getadmission));
+
         return redirect(route('reviewdetails', $getadmission));
     }
+
+
+    public function statusChange(Request $request, Getadmission $getadmission)
+    {
+        $data = $request->validate([
+            "status" => ["required"],
+        ]);
+        $getadmission->update($data);
+        return redirect('/getadmission-index');
+    }
+
+
     public function review(Getadmission $getadmission)
     {
         return view('frontend.reviewdetails', [
             'admissions' => $getadmission
+        ]);
+    }
+
+    public function getadmissionhomepage()
+    {
+        $upcommings = Upcommingclass::get();
+        return view('frontend.getadmissionhomepage', [
+            "upcommings" => $upcommings
         ]);
     }
 }

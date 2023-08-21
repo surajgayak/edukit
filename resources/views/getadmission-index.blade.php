@@ -48,17 +48,17 @@
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Email
                                 </th>
+                                <th scope="col" class="text-light" style="background-color: #515151">Status
+                                </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Address
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Academic level
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">School/College
                                 </th>
-
                                 <th scope="col" class="text-light" style="background-color: #515151">Payment Amount
                                 </th>
-                                <th scope="col" class="text-light" style="background-color: #515151">Status
-                                </th>
+
                                 <th scope="col" class="text-light" style="background-color: #515151">Upcomming ID
                                 </th>
                                 <th scope="col" class="text-light" style="background-color: #515151">Payment ID
@@ -77,26 +77,48 @@
                                     <td scope="row">{{ $key + 1 }}</td>
                                     <td> {{ $getadmission->name }}</td>
                                     <td> {{ $getadmission->email }}</td>
+                                    <td>
+                                        @if ($getadmission->status == 'pending')
+                                            <span class="btn btn-primary text-light" data-bs-toggle="modal"
+                                                data-bs-target="#status{{ $getadmission->id }}">
+                                                {{ $getadmission->status }}
+                                            </span>
+                                        @elseif ($getadmission->status == 'processing')
+                                            <span class="btn btn-info text-light" data-bs-toggle="modal"
+                                                data-bs-target="#status{{ $getadmission->id }}">
+                                                {{ $getadmission->status }}
+                                            </span>
+                                        @elseif ($getadmission->status == 'confirmed')
+                                            <span class="btn btn-success text-light" data-bs-toggle="modal"
+                                                data-bs-target="#status{{ $getadmission->id }}">
+                                                {{ $getadmission->status }}
+                                            </span>
+                                        @else
+                                            <span class="btn btn-danger text-light" data-bs-toggle="modal"
+                                                data-bs-target="#status{{ $getadmission->id }}">
+                                                {{ $getadmission->status }}
+                                            </span>
+                                        @endif
+                                    </td>
                                     <td> {{ $getadmission->address }}</td>
                                     <td> {{ $getadmission->academic_level }}</td>
                                     <td> {{ $getadmission->college }}</td>
                                     <td> {{ $getadmission->payment_amount }}</td>
-                                    <td> {{ $getadmission->status }}</td>
-                                    <td> {{ $getadmission->upcommingclasses_id }}</td>
-                                    <td> {{ $getadmission->paymentmethods_id }}</td>
-                                    <td><img src="{{ asset('images/medias/' . $getadmission->name) }}" width="100"
-                                            height="100"></td>
+                                    <td> {{ $getadmission->upcommingclasses->courses->title }}</td>
+                                    <td> {{ $getadmission->paymentmethods?->title }}</td>
+                                    <td><img src="{{ asset('images/medias/' . $getadmission->payment_image) }}"
+                                            width="100" height="100"></td>
 
 
                                     <td class="text-nowrap">
                                         <div class="container-fluid d-flex">
 
-                                            <a href="{{ route('paymentmethod-edit', $payment) }}">
+                                            {{-- <a href="{{ route('paymentmethod-edit', $payment) }}">
                                                 <div class="btn blue_button sized"><i
                                                         class='bx bx-message-square-edit'></i>Edit
                                                 </div>
-                                            </a>
-                                            <a class="mx-1" href="{{ route('paymentmethod-delete', $payment->id) }}">
+                                            </a> --}}
+                                            <a href="{{ route('getadmission-delete', $getadmission->id) }}"class="mx-1">
                                                 <div class="btn btn-danger sized"><i class='bi bi-trash'></i>Delete
                                                 </div>
                                             </a>
@@ -104,6 +126,52 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <!-- Modal -->
+                                <div class="modal fade" id="status{{ $getadmission->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background-color: #bef8fe">
+                                                <h3 class="modal-title text-center" id="exampleModalLongTitle">Change
+                                                    Status for :
+                                                    <b> {{ $getadmission->name }} </b>
+                                                </h3>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form method="POST" action="{{ route('status-change', $getadmission) }}">
+                                                @csrf
+                                                <div class="modal-body">
+
+                                                    <div class="mb-3">
+                                                        <label for="recipient-name" class="col-form-label">
+                                                            <b> Change the
+                                                                Admission Status:</b></label>
+                                                        <select class="form-select" name="status" required
+                                                            aria-label="Default select example">
+                                                            <option value="pending">pending</option>
+                                                            <option value="processing">processing</option>
+                                                            <option value="confirmed">confirmed</option>
+                                                            <option value="cancelled">cancelled</option>
+                                                        </select>
+                                                        @if ($errors->has('status'))
+                                                            <div class="error text-danger">{{ $errors->first('status') }}
+                                                            </div>
+                                                        @endif
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
 
 
@@ -127,7 +195,8 @@
                             </div>
 
 
-                            <a class="text-decoration-none" href="{{ $getadmissions->withQueryString()->nextPageUrl() }}">
+                            <a class="text-decoration-none"
+                                href="{{ $getadmissions->withQueryString()->nextPageUrl() }}">
                                 <div class="btn btn-sm btn-primary d-flex align-items-center justify-content-center">
                                     Next
                                 </div>
@@ -151,7 +220,7 @@
                 perPage: perPageEl.value,
                 page: 1,
             };
-            const url = new URL("{{ url('/') }}/notice-index");
+            const url = new URL("{{ url('/') }}/getadmission-index");
             url.search = new URLSearchParams(queryParams).toString();
             window.location.href = url
         }

@@ -16,9 +16,9 @@ class MediaController extends Controller
         $main_query = Media::query();
 
         if ($request->perPage > 0) {
-            $medias = $main_query->paginate($request->perPage);
+            $medias = $main_query->orderBy('id', 'desc')->paginate($request->perPage);
         } else
-            $medias = $main_query->paginate(10);
+            $medias = $main_query->orderBy('id', 'desc')->paginate(10);
         return view("media-index", ["medias" => $medias]);
     }
 
